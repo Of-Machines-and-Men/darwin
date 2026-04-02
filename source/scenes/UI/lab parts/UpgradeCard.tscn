@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://12o50oghf23p"]
+
+[node name="UpgradeCard" type="Node2D" unique_id=70455788]
+
+[node name="CardBorder" type="NinePatchRect" parent="." unique_id=723185199]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="RarityLabel" type="Label" parent="." unique_id=1253140830]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="NameLabel" type="Label" parent="." unique_id=394267737]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="Injector" type="AnimatedSprite2D" parent="." unique_id=1760578323]
+
+[node name="UnitRunner" type="AnimatedSprite2D" parent="." unique_id=27305450]
+
+[node name="EffectLabel" type="Label" parent="." unique_id=115530746]
+offset_right = 40.0
+offset_bottom = 23.0
