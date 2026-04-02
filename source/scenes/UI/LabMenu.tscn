@@ -1,9 +1,35 @@
 [gd_scene format=3 uid="uid://bgkkbvit0i1ub"]
 
-[node name="LabMenu" type="Control" unique_id=1744398853]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="LabMenu" type="Node2D" unique_id=166093864]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1027273178]
+
+[node name="TopBar" type="HBoxContainer" parent="CanvasLayer" unique_id=1689676708]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MutiePointsLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=2112578642]
+layout_mode = 2
+
+[node name="RerollsLabel" type="Label" parent="CanvasLayer/TopBar" unique_id=175168806]
+layout_mode = 2
+
+[node name="UnitRoster" type="VBoxContainer" parent="CanvasLayer" unique_id=28329195]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Treadmill" type="Node2D" parent="CanvasLayer" unique_id=772069673]
+
+[node name="BeltStrip" type="AnimatedSprite2D" parent="CanvasLayer/Treadmill" unique_id=718958458]
+
+[node name="CardSlot_1" type="Marker2D" parent="CanvasLayer/Treadmill" unique_id=222812183]
+
+[node name="CardSlot_2" type="Marker2D" parent="CanvasLayer/Treadmill" unique_id=1149036450]
+
+[node name="CardSlot_3" type="Marker2D" parent="CanvasLayer/Treadmill" unique_id=344596755]
+
+[node name="RerollButton" type="Button" parent="CanvasLayer" unique_id=121873851]
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="EvilOverlord" type="AnimatedSprite2D" parent="CanvasLayer" unique_id=112097072]
