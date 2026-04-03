@@ -8,6 +8,14 @@ border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3cr2"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
+
 [node name="LabMenu" type="Node2D" unique_id=166093864]
 
 [node name="EvilOverlord" type="AnimatedSprite2D" parent="." unique_id=112097072]
@@ -48,6 +56,7 @@ size_flags_vertical = 3
 [node name="UnitRoster" type="PanelContainer" parent="CanvasLayer/Control/VBoxContainer/ContentRow" unique_id=753458540]
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_e3cr2")
 
 [node name="Treadmill" type="Node2D" parent="CanvasLayer/Control/VBoxContainer/ContentRow" unique_id=772069673]
 
