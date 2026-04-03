@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cd6ofylu334t"]
+
+[ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_msii4"]
+
+[node name="Goon" type="CharacterBody2D" unique_id=151029855]
+script = ExtResource("1_msii4")
+metadata/_custom_type_script = "uid://b4m52nppdykhp"
