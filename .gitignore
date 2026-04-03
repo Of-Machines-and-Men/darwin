@@ -1,6 +1,9 @@
 # VS code ignores
 .vscode/
 
+# claude
+.claude/
+
 # Godot 4+ specific ignores
 .godot/
 .nomedia
