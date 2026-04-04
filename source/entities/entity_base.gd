@@ -50,7 +50,23 @@ func _lost_audible(_lost_target: Node) -> void:
 	
 func _lost_visual(_lost_target: Node) -> void:
 	pass
+
+func _get_valid_priority_ability(abilities: Array[AbilityBase]) -> AbilityBase:
+	var last_priority = -INF
+	var selected_ability
+	for ability in abilities:
+		if ability.can_activate(self) and ability.priority > last_priority:
+			last_priority = ability.priority
+			selected_ability = ability
+	return selected_ability
 	
+func _set_movement_ability(ability: AbilityBase) -> void:
+	if ability != _current_movement_ability:
+		_current_movement_ability.on_deactivated(self)
+		if ability:
+			ability.on_activated(self)
+		_current_movement_ability = ability
+
 func _think() -> void:
 	pass
 
