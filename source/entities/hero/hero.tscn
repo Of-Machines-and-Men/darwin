@@ -1,7 +1,18 @@
 [gd_scene format=3 uid="uid://crd20w0gi0s7t"]
 
 [ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_3oidt"]
+[ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="2_wugy8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ds5ku"]
+radius = 13.0
+height = 62.0
 
 [node name="Hero" type="CharacterBody2D" unique_id=636102250]
 script = ExtResource("1_3oidt")
 metadata/_custom_type_script = "uid://b4m52nppdykhp"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=785338065]
+texture = ExtResource("2_wugy8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1853296610]
+shape = SubResource("CapsuleShape2D_ds5ku")
