@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c2nyul5ey88yn"]
+
+[ext_resource type="Script" uid="uid://b502rdsuponv5" path="res://source/entities/combatant/combatant_base.gd" id="1_mgybu"]
+
+[node name="Combatant" type="CharacterBody2D" unique_id=1557392719]
+script = ExtResource("1_mgybu")
+metadata/_custom_type_script = "uid://b4m52nppdykhp"

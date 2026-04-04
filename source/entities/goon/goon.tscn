@@ -1,29 +1,53 @@
 [gd_scene format=3 uid="uid://cd6ofylu334t"]
 
-[ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_msii4"]
-[ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="2_34s4a"]
+[ext_resource type="Script" uid="uid://b502rdsuponv5" path="res://source/entities/combatant/combatant_base.gd" id="1_tcr7l"]
+[ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_c1ety"]
+[ext_resource type="Script" uid="uid://c7sgbowaplewh" path="res://source/gameplay/attributes/modifiers/attribute_modifier_base.gd" id="3_odqn5"]
+[ext_resource type="Script" uid="uid://y1agsw786bul" path="res://source/gameplay/attributes/attribute_set.gd" id="4_u0c5a"]
+[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_vujo8"]
+[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="6_lyguq"]
+[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="7_68cb5"]
+[ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="8_73fiq"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_tq2t5"]
-radius = 15.0
+[sub_resource type="Resource" id="Resource_643ot"]
+script = ExtResource("4_u0c5a")
+metadata/_custom_type_script = "uid://y1agsw786bul"
 
-[sub_resource type="Animation" id="Animation_34s4a"]
-resource_name = "Moving"
+[sub_resource type="Resource" id="Resource_8d8x0"]
+resource_local_to_scene = true
+script = ExtResource("6_lyguq")
+priority = 1
+metadata/_custom_type_script = "uid://bhn468aqmpp2j"
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tq2t5"]
-_data = {
-&"Moving": SubResource("Animation_34s4a")
-}
+[sub_resource type="Resource" id="Resource_alwcr"]
+resource_local_to_scene = true
+script = ExtResource("7_68cb5")
+search_distance_threshold = 20.0
+metadata/_custom_type_script = "uid://cypbso6jiqokp"
 
-[node name="Goon" type="CharacterBody2D" unique_id=151029855]
-script = ExtResource("1_msii4")
-metadata/_custom_type_script = "uid://b4m52nppdykhp"
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1ety"]
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=678954130]
-texture = ExtResource("2_34s4a")
+[sub_resource type="CircleShape2D" id="CircleShape2D_5cy7b"]
+radius = 500.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=560406044]
-position = Vector2(1, 0)
-shape = SubResource("CircleShape2D_tq2t5")
+[node name="Goon" type="CharacterBody2D" unique_id=927201230 node_paths=PackedStringArray("vision_zone")]
+motion_mode = 1
+script = ExtResource("1_tcr7l")
+vision_zone = NodePath("VisionZone")
+attributes = SubResource("Resource_643ot")
+faction = 1
+movement_abilities = Array[ExtResource("5_vujo8")]([SubResource("Resource_8d8x0"), SubResource("Resource_alwcr")])
+threat_rating = 1.0
+metadata/_custom_type_script = "uid://b502rdsuponv5"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=298111040]
-libraries/ = SubResource("AnimationLibrary_tq2t5")
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=1895375635]
+shape = SubResource("CapsuleShape2D_c1ety")
+
+[node name="VisionZone" type="Area2D" parent="." unique_id=933292941]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionZone" unique_id=953294766]
+shape = SubResource("CircleShape2D_5cy7b")
+debug_color = Color(0, 0.6, 0.11764706, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1356718512]
+texture = ExtResource("8_73fiq")
