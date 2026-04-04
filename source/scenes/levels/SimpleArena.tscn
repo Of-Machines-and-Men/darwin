@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dmn4axtt8tfnu"]
+
+[ext_resource type="PackedScene" uid="uid://crd20w0gi0s7t" path="res://source/entities/hero/hero.tscn" id="1_6f61i"]
+[ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="2_rsulj"]
+[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="3_pj3j6"]
+[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="4_m3gt6"]
+[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="5_vf1yo"]
+
+[sub_resource type="Resource" id="Resource_rsulj"]
+resource_local_to_scene = true
+script = ExtResource("4_m3gt6")
+priority = 1
+metadata/_custom_type_script = "uid://bhn468aqmpp2j"
+
+[sub_resource type="Resource" id="Resource_pj3j6"]
+resource_local_to_scene = true
+script = ExtResource("5_vf1yo")
+search_radius = 200.0
+metadata/_custom_type_script = "uid://cypbso6jiqokp"
+
+[sub_resource type="Resource" id="Resource_m3gt6"]
+resource_local_to_scene = true
+script = ExtResource("4_m3gt6")
+priority = 1
+metadata/_custom_type_script = "uid://bhn468aqmpp2j"
+
+[sub_resource type="Resource" id="Resource_vf1yo"]
+resource_local_to_scene = true
+script = ExtResource("5_vf1yo")
+metadata/_custom_type_script = "uid://cypbso6jiqokp"
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_424k3"]
+b = Vector2(1150, 0)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_o8h4h"]
+b = Vector2(0, 650)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_235dx"]
+a = Vector2(0, 650)
+b = Vector2(1150, 650)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_pk0y3"]
+a = Vector2(1150, 0)
+b = Vector2(1150, 650)
+
+[node name="SimpleArena" type="Node2D" unique_id=1445853623]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2059071483]
+
+[node name="Hero" parent="." unique_id=806952707 instance=ExtResource("1_6f61i")]
+position = Vector2(418, 268)
+movement_abilities = Array[ExtResource("3_pj3j6")]([SubResource("Resource_rsulj"), SubResource("Resource_pj3j6")])
+
+[node name="Goon" parent="." unique_id=927201230 instance=ExtResource("2_rsulj")]
+position = Vector2(673, 270)
+movement_abilities = Array[ExtResource("3_pj3j6")]([SubResource("Resource_m3gt6"), SubResource("Resource_vf1yo")])
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=4931375]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1929549001]
+shape = SubResource("SegmentShape2D_424k3")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=1553684154]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=733887284]
+shape = SubResource("SegmentShape2D_o8h4h")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=2127043887]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=1047048066]
+shape = SubResource("SegmentShape2D_235dx")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=549986875]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1620766395]
+shape = SubResource("SegmentShape2D_pk0y3")

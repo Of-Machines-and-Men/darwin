@@ -3,7 +3,9 @@ extends Resource
 
 @export var base_value: float = 1.0
 @export var modifiers: Array[AttributeModifierBase] = []
-@export var attribute_tags: Array[StringName] = []
+
+func get_attribute_name() -> StringName:
+	return &"Attribute"
 
 func get_effective_value(additional_modifiers: Array[AttributeModifierBase] = []):
 	var accumulated_value = base_value
