@@ -1,0 +1,7 @@
+[gd_resource type="Theme" format=3 uid="uid://dgq2a34r85f6c"]
+
+[ext_resource type="FontFile" uid="uid://6s4v3qqnuknj" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="1_5x3i2"]
+
+[resource]
+default_font = ExtResource("1_5x3i2")
+default_font_size = 18
