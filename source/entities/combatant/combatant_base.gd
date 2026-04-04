@@ -57,16 +57,24 @@ func _update_current_target() -> void:
 	var hostile_targets = _get_known_hostile_targets()
 	current_target = _get_nearest_entity(hostile_targets)
 
-func sort_abilities_by_priority(a: AbilityBase, b: AbilityBase):
-	return a.priority > b.priority
+func _get_valid_priority_ability(abilities: Array[AbilityBase]) -> AbilityBase:
+	var last_priority = -INF
+	var selected_ability
+	for ability in abilities:
+		if ability.can_activate(self) and ability.priority > last_priority:
+			last_priority = ability.priority
+			selected_ability = ability
+	return selected_ability
+	
+func _set_movement_ability(ability: AbilityBase) -> void:
+	if ability != _current_movement_ability:
+		_current_movement_ability.on_deactivated(self)
+		ability.on_activated(self)
+		_current_movement_ability = ability
 	
 func _think() -> void:
 	_update_current_target()
-	movement_abilities.sort_custom(sort_abilities_by_priority)
-	for ability in movement_abilities:
-		if ability.can_activate(self):
-			_current_movement_ability = ability
-			break
+	_current_movement_ability = _get_valid_priority_ability(movement_abilities)
 	
 func _on_health_lost() -> void:
 	pass

@@ -48,11 +48,11 @@ b = Vector2(1150, 650)
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2059071483]
 
 [node name="Hero" parent="." unique_id=806952707 instance=ExtResource("1_6f61i")]
-position = Vector2(29, 47)
+position = Vector2(418, 268)
 movement_abilities = Array[ExtResource("3_pj3j6")]([SubResource("Resource_rsulj"), SubResource("Resource_pj3j6")])
 
 [node name="Goon" parent="." unique_id=927201230 instance=ExtResource("2_rsulj")]
-position = Vector2(1115, 616)
+position = Vector2(673, 270)
 movement_abilities = Array[ExtResource("3_pj3j6")]([SubResource("Resource_m3gt6"), SubResource("Resource_vf1yo")])
 
 [node name="WallTop" type="StaticBody2D" parent="." unique_id=4931375]
