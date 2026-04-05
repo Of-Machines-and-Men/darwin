@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://bgkkbvit0i1ub"]
 
 [ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_k8y2h"]
-[ext_resource type="Shader" uid="uid://dvi77k55ed43s" path="res://source/shaders/Pencil.gdshader" id="2_hp2ef"]
+[ext_resource type="Texture2D" uid="uid://bsc2bqfxuqw2i" path="res://assets/art/placeholder/ui/topbar.png" id="2_hp2ef"]
+[ext_resource type="Texture2D" uid="uid://wlf1c3drbpmj" path="res://assets/art/placeholder/ui/sidebar.png" id="3_2cxep"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vwedq"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -10,15 +11,6 @@ border_width_top = 3
 border_width_right = 3
 border_width_bottom = 3
 border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_2cxep"]
-shader = ExtResource("2_hp2ef")
-shader_parameter/wobble_strength = 2.0
-shader_parameter/wobble_frequency = 8.0
-shader_parameter/border_width = 3.0
-shader_parameter/border_color = Color(0.1, 0.08, 0.05, 1)
-shader_parameter/fill_color = Color(0, 0, 0, 0)
-shader_parameter/rect_size = Vector2(300, 200)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e3cr2"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -56,9 +48,9 @@ custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_vwedq")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/VBoxContainer/TopBar" unique_id=295981565]
-material = SubResource("ShaderMaterial_2cxep")
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/VBoxContainer/TopBar" unique_id=1899971294]
 layout_mode = 2
+texture = ExtResource("2_hp2ef")
 
 [node name="MutiePointsLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer/TopBar" unique_id=2112578642]
 layout_mode = 2
@@ -75,9 +67,10 @@ custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_e3cr2")
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control/VBoxContainer/ContentRow/UnitRoster" unique_id=1621052793]
-material = SubResource("ShaderMaterial_2cxep")
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Control/VBoxContainer/ContentRow/UnitRoster" unique_id=806403000]
 layout_mode = 2
+texture = ExtResource("3_2cxep")
+patch_margin_right = 198
 
 [node name="Treadmill" type="Node2D" parent="CanvasLayer/Control/VBoxContainer/ContentRow" unique_id=772069673]
 
