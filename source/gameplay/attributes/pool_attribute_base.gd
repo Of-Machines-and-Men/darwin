@@ -6,13 +6,22 @@ extends AttributeBase
 
 var _current_value
 
+func _get_applicable_deplete_modifiers(modifiers: Array[AttributeModifierBase]):
+	var applicability = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_DEPLETE]
+	return _get_applicable_modifiers(modifiers, applicability)
+	
+func _get_applicable_restore_modifiers(modifiers: Array[AttributeModifierBase]):
+	var applicability = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_RESTORE]
+	return _get_applicable_modifiers(modifiers, applicability)
+
 func tick(delta_time: float):
 	pass;
 
-func deplete(amount: float, depletion_tags: Array[StringName] = []):
+func deplete(amount: float, modifiers: Array[AttributeModifierBase] = [], depletion_tags: Array[StringName] = []):
 	var incoming = amount
+	var applicable_modifiers = _get_applicable_deplete_modifiers(modifiers)
 	
-	for modifier in modifiers:
+	for modifier in applicable_modifiers:
 		incoming = modifier.apply_incoming(incoming, depletion_tags)
 	
 	_current_value = maxf(get_current_value() - incoming, min_value)
@@ -21,10 +30,11 @@ func deplete(amount: float, depletion_tags: Array[StringName] = []):
 	if (_current_value <= min_value):
 		on_empty.emit()
 
-func restore(amount: float, restoration_tags: Array[StringName] = []):
+func restore(amount: float, modifiers: Array[AttributeModifierBase] = [], restoration_tags: Array[StringName] = []):
 	var incoming = amount
+	var applicable_modifiers = _get_applicable_restore_modifiers(modifiers)
 	
-	for modifier in modifiers:
+	for modifier in applicable_modifiers:
 		incoming = modifier.apply_incoming(incoming, restoration_tags)
 	
 	_current_value = minf(get_current_value() + incoming, get_effective_value())

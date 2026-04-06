@@ -2,29 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b502rdsuponv5" path="res://source/entities/combatant/combatant_base.gd" id="1_3oidt"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_dh7n1"]
-[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="2_vk6kw"]
-[ext_resource type="Script" uid="uid://c7sgbowaplewh" path="res://source/gameplay/attributes/modifiers/attribute_modifier_base.gd" id="3_3cjjk"]
-[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="3_7t8x3"]
-[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="4_r407p"]
-[ext_resource type="Script" uid="uid://y1agsw786bul" path="res://source/gameplay/attributes/attribute_set.gd" id="4_tdmhf"]
+[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/attributes/attribute_component.gd" id="3_ds5ku"]
 [ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="5_dh7n1"]
-
-[sub_resource type="Resource" id="Resource_yojrb"]
-script = ExtResource("4_tdmhf")
-metadata/_custom_type_script = "uid://y1agsw786bul"
-
-[sub_resource type="Resource" id="Resource_3cjjk"]
-resource_local_to_scene = true
-script = ExtResource("3_7t8x3")
-priority = 1
-metadata/_custom_type_script = "uid://bhn468aqmpp2j"
-
-[sub_resource type="Resource" id="Resource_tdmhf"]
-resource_local_to_scene = true
-script = ExtResource("4_r407p")
-search_distance_threshold = 20.0
-search_radius = 200.0
-metadata/_custom_type_script = "uid://cypbso6jiqokp"
+[ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="5_vk6kw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yojrb"]
 height = 60.0
@@ -32,13 +12,16 @@ height = 60.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_qty01"]
 radius = 500.0
 
-[node name="Hero" type="CharacterBody2D" unique_id=806952707 node_paths=PackedStringArray("vision_zone")]
+[sub_resource type="Resource" id="Resource_7t8x3"]
+resource_local_to_scene = true
+script = ExtResource("5_vk6kw")
+metadata/_custom_type_script = "uid://dlony6exa8o5p"
+
+[node name="Hero" type="CharacterBody2D" unique_id=806952707 node_paths=PackedStringArray("vision_zone", "attributes")]
 motion_mode = 1
 script = ExtResource("1_3oidt")
 vision_zone = NodePath("VisionZone")
-attributes = SubResource("Resource_yojrb")
-movement_abilities = Array[ExtResource("2_vk6kw")]([SubResource("Resource_3cjjk"), SubResource("Resource_tdmhf")])
-threat_rating = 1.0
+attributes = NodePath("AttributeComponent")
 metadata/_custom_type_script = "uid://b502rdsuponv5"
 
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=951855046]
@@ -52,3 +35,8 @@ debug_color = Color(0, 0.6, 0.19607843, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1465123318]
 texture = ExtResource("5_dh7n1")
+
+[node name="AttributeComponent" type="Node" parent="." unique_id=2004663492]
+script = ExtResource("3_ds5ku")
+attributes = SubResource("Resource_7t8x3")
+metadata/_custom_type_script = "uid://bwbu46foc2wiv"
