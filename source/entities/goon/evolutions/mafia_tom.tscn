@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://b8kbxep5cndfn"]
+
+[ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="1_fqv6u"]
+[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="2_7xi5s"]
+[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="3_fctok"]
+[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="4_g4lng"]
+
+[sub_resource type="Resource" id="Resource_t0brb"]
+resource_local_to_scene = true
+script = ExtResource("3_fctok")
+priority = 1
+metadata/_custom_type_script = "uid://bhn468aqmpp2j"
+
+[sub_resource type="Resource" id="Resource_rx28u"]
+resource_local_to_scene = true
+script = ExtResource("4_g4lng")
+search_distance_threshold = 20.0
+metadata/_custom_type_script = "uid://cypbso6jiqokp"
+
+[node name="MafiaTom" unique_id=927201230 instance=ExtResource("1_fqv6u")]
+movement_abilities = Array[ExtResource("2_7xi5s")]([SubResource("Resource_t0brb"), SubResource("Resource_rx28u")])

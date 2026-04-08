@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cx85i2eaqqr4l"]
+
+[ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="1_7rd00"]
+[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="2_8t3k1"]
+[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="3_5pbrl"]
+[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="4_hmwm0"]
+
+[sub_resource type="Resource" id="Resource_4p7s5"]
+resource_local_to_scene = true
+script = ExtResource("3_5pbrl")
+priority = 1
+metadata/_custom_type_script = "uid://bhn468aqmpp2j"
+
+[sub_resource type="Resource" id="Resource_mkkrf"]
+resource_local_to_scene = true
+script = ExtResource("4_hmwm0")
+search_distance_threshold = 20.0
+metadata/_custom_type_script = "uid://cypbso6jiqokp"
+
+[node name="Goon" unique_id=927201230 instance=ExtResource("1_7rd00")]
+movement_abilities = Array[ExtResource("2_8t3k1")]([SubResource("Resource_4p7s5"), SubResource("Resource_mkkrf")])
