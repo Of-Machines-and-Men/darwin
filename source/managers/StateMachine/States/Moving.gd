@@ -1,11 +1,14 @@
-extends Node
+class_name WalkState
+extends State
 
+func enter() -> void:
+	# start walk animation
+	pass
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func exit() -> void:
+	# clean up
+	pass
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func update(delta: float) -> void:
+	# movement logic
 	pass

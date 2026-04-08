@@ -1,8 +1,8 @@
-class_name IdleState
+class_name StunState
 extends State
 
 func enter() -> void:
-	# start idle animation
+	# start death animation
 	pass
 
 func exit() -> void:
@@ -10,5 +10,5 @@ func exit() -> void:
 	pass
 
 func update(delta: float) -> void:
-	# idle logic
+	# death logic
 	pass

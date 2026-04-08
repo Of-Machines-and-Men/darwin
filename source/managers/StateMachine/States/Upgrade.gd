@@ -1,8 +1,8 @@
-class_name IdleState
+class_name UpgradeState
 extends State
 
 func enter() -> void:
-	# start idle animation
+	# start upgrade animation
 	pass
 
 func exit() -> void:
@@ -10,5 +10,5 @@ func exit() -> void:
 	pass
 
 func update(delta: float) -> void:
-	# idle logic
+	# upgrade logic
 	pass
