@@ -17,5 +17,5 @@ script = ExtResource("4_0d403")
 search_distance_threshold = 20.0
 metadata/_custom_type_script = "uid://cypbso6jiqokp"
 
-[node name="Goon" unique_id=927201230 instance=ExtResource("1_55qkm")]
+[node name="Entity" unique_id=927201230 instance=ExtResource("1_55qkm")]
 movement_abilities = Array[ExtResource("2_g445o")]([SubResource("Resource_637j4"), SubResource("Resource_lduou")])
