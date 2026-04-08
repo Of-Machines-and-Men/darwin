@@ -1,79 +1,19 @@
 class_name EntityBase
 extends CharacterBody2D
 
-@export var vision_zone: Area2D
-@export var hearing_zone: Area2D
-
-@export var attributes: AttributeComponent
+@export var modifiers: ModifiersComponent
+@export var health: HealthComponent
+@export var behaviour: BehaviourComponent
 @export var faction: FactionManager.Faction
 
-@export var movement_abilities: Array[AbilityBase] = []
-
 @export var threat_rating: float = 0.0
-@export var base_decision_delay: float = 1.0
-
-# we should be able to make a decision on spawn instead of delaying initially
-var _thinking_timer: float = 0.0
-
-var _current_movement_ability: AbilityBase = null
-
-var current_target: EntityBase
 
 func _ready() -> void:
-	if vision_zone:
-		vision_zone.body_entered.connect(_perceive_visual)
-		vision_zone.body_exited.connect(_lost_visual)
-	
-	if hearing_zone:
-		hearing_zone.body_entered.connect(_perceive_audible)
-		hearing_zone.body_exited.connect(_lost_audible)
+	pass
 
-func _physics_process(delta: float) -> void:
-	_thinking_timer -= delta
-	if (_thinking_timer <= 0.0):
-		_think()
-		_thinking_timer = base_decision_delay
-	
-	_act(delta)
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 
-func _perceive_audible(_detected_target: Node) -> void:
-	pass
-	
-func _perceive_visual(_detected_target: Node) -> void:
-	pass
-	
-func _lost_audible(_lost_target: Node) -> void:
-	pass
-	
-func _lost_visual(_lost_target: Node) -> void:
-	pass
-
-func _get_valid_priority_ability(abilities: Array[AbilityBase]) -> AbilityBase:
-	var last_priority = -INF
-	var selected_ability
-	for ability in abilities:
-		if ability.can_activate(self) and ability.priority > last_priority:
-			last_priority = ability.priority
-			selected_ability = ability
-	return selected_ability
-	
-func _set_movement_ability(ability: AbilityBase) -> void:
-	if ability != _current_movement_ability:
-		_current_movement_ability.on_deactivated(self)
-		if ability:
-			ability.on_activated(self)
-		_current_movement_ability = ability
-
-func _think() -> void:
-	pass
-
-func _trigger_decision() -> void:
-	_thinking_timer = 0.0
-	
-func _act(delta_time: float) -> void:
-	if _current_movement_ability and _current_movement_ability.can_activate(self):
-		_current_movement_ability.tick(self, delta_time)
-
-func get_current_destination() -> Vector2:
-	return self.global_position
+func apply_damage(amount: float, tags: Array[StringName] = []) -> void:
+	if health:
+		health.apply_damage(amount, tags)

@@ -1,10 +1,14 @@
 class_name PoolAttributeBase
 extends AttributeBase
 
+@export var priority: int = 0
 @export var min_value: float = 0.0
 @export var starting_value: float = 1.0
 
 var _current_value
+
+func get_attribute_name() -> StringName:
+	return &"PoolAttribute"
 
 func _get_applicable_deplete_modifiers(modifiers: Array[AttributeModifierBase]):
 	var applicability = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_DEPLETE]
@@ -14,7 +18,7 @@ func _get_applicable_restore_modifiers(modifiers: Array[AttributeModifierBase]):
 	var applicability = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_RESTORE]
 	return _get_applicable_modifiers(modifiers, applicability)
 
-func tick(delta_time: float):
+func tick(_delta_time: float):
 	pass;
 
 func deplete(amount: float, modifiers: Array[AttributeModifierBase] = [], depletion_tags: Array[StringName] = []):

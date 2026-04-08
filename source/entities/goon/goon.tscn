@@ -1,45 +1,48 @@
 [gd_scene format=3 uid="uid://cd6ofylu334t"]
 
-[ext_resource type="Script" uid="uid://b502rdsuponv5" path="res://source/entities/combatant/combatant_base.gd" id="1_tcr7l"]
+[ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_odqn5"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_c1ety"]
 [ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="4_u0c5a"]
 [ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_vujo8"]
-[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/attributes/attribute_component.gd" id="6_8lcw1"]
-[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="6_lyguq"]
-[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="7_68cb5"]
+[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="6_8lcw1"]
 [ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="8_73fiq"]
-
-[sub_resource type="Resource" id="Resource_8d8x0"]
-resource_local_to_scene = true
-script = ExtResource("6_lyguq")
-priority = 1
-metadata/_custom_type_script = "uid://bhn468aqmpp2j"
-
-[sub_resource type="Resource" id="Resource_alwcr"]
-resource_local_to_scene = true
-script = ExtResource("7_68cb5")
-search_distance_threshold = 20.0
-metadata/_custom_type_script = "uid://cypbso6jiqokp"
+[ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/abilities_component.gd" id="9_vujo8"]
+[ext_resource type="Script" uid="uid://cu8i7xql5j2ev" path="res://source/components/behaviour/behaviour_component.gd" id="10_lyguq"]
+[ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="10_vujo8"]
+[ext_resource type="Script" uid="uid://bctvnj0da6gsr" path="res://source/gameplay/abilities/active/melee_attack_ability.gd" id="11_68cb5"]
+[ext_resource type="Script" uid="uid://uq80dd3eadwy" path="res://source/components/health/health_component.gd" id="12_lyguq"]
+[ext_resource type="Script" uid="uid://b8aniekowynst" path="res://source/gameplay/attributes/resources/health.gd" id="13_68cb5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1ety"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cy7b"]
 radius = 500.0
 
-[sub_resource type="Resource" id="Resource_c1ety"]
+[sub_resource type="Resource" id="Resource_73fiq"]
+resource_local_to_scene = true
+script = ExtResource("11_68cb5")
+projectile_scene = ExtResource("10_vujo8")
+metadata/_custom_type_script = "uid://bctvnj0da6gsr"
+
+[sub_resource type="Resource" id="Resource_643ot"]
+script = ExtResource("13_68cb5")
+starting_value = 10.0
+base_value = 10.0
+metadata/_custom_type_script = "uid://b8aniekowynst"
+
+[sub_resource type="Resource" id="Resource_68cb5"]
 resource_local_to_scene = true
 script = ExtResource("4_u0c5a")
 metadata/_custom_type_script = "uid://dlony6exa8o5p"
 
-[node name="Goon" type="CharacterBody2D" unique_id=927201230 node_paths=PackedStringArray("vision_zone", "attributes")]
+[node name="Goon" type="CharacterBody2D" unique_id=1456911765 node_paths=PackedStringArray("modifiers", "health", "behaviour")]
 motion_mode = 1
-script = ExtResource("1_tcr7l")
-vision_zone = NodePath("VisionZone")
-attributes = NodePath("AttributeComponent")
-faction = 1
-movement_abilities = Array[ExtResource("5_vujo8")]([SubResource("Resource_8d8x0"), SubResource("Resource_alwcr")])
+script = ExtResource("1_odqn5")
+modifiers = NodePath("ModifiersComponent")
+health = NodePath("HealthComponent")
+behaviour = NodePath("BehaviourComponent")
 threat_rating = 1.0
-metadata/_custom_type_script = "uid://b502rdsuponv5"
+metadata/_custom_type_script = "uid://b4m52nppdykhp"
 
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=1895375635]
 shape = SubResource("CapsuleShape2D_c1ety")
@@ -53,7 +56,22 @@ debug_color = Color(0, 0.6, 0.11764706, 0.41960785)
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1356718512]
 texture = ExtResource("8_73fiq")
 
-[node name="AttributeComponent" type="Node" parent="." unique_id=1756291994]
+[node name="AbilityComponent" type="Node" parent="." unique_id=1701600135]
+script = ExtResource("9_vujo8")
+abilities = Array[ExtResource("5_vujo8")]([SubResource("Resource_73fiq")])
+metadata/_custom_type_script = "uid://c7aqkxjygkdfs"
+
+[node name="HealthComponent" type="Node" parent="." unique_id=465572554]
+script = ExtResource("12_lyguq")
+health_attribute = SubResource("Resource_643ot")
+metadata/_custom_type_script = "uid://uq80dd3eadwy"
+
+[node name="ModifiersComponent" type="Node" parent="." unique_id=1081119327]
 script = ExtResource("6_8lcw1")
-attributes = SubResource("Resource_c1ety")
 metadata/_custom_type_script = "uid://bwbu46foc2wiv"
+
+[node name="BehaviourComponent" type="Node" parent="." unique_id=2117900150 node_paths=PackedStringArray("vision_zone")]
+script = ExtResource("10_lyguq")
+vision_zone = NodePath("../VisionZone")
+attributes = SubResource("Resource_68cb5")
+metadata/_custom_type_script = "uid://cu8i7xql5j2ev"

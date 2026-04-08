@@ -10,7 +10,7 @@ height = 60.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_qty01"]
 radius = 500.0
 
-[node name="Hero" type="CharacterBody2D" unique_id=435185539]
+[node name="Hero" type="CharacterBody2D" unique_id=334832573]
 motion_mode = 1
 script = ExtResource("1_ds5ku")
 metadata/_custom_type_script = "uid://b4m52nppdykhp"

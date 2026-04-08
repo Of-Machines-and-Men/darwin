@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://u2d5ee88jvec"]
+
+[ext_resource type="Script" uid="uid://pjwtd47uvpe5" path="res://source/projectiles/projectile_base.gd" id="1_571qm"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_571qm"]
+
+[node name="MeleeProjectile" type="Node2D" unique_id=705210077 node_paths=PackedStringArray("impact_zone")]
+script = ExtResource("1_571qm")
+impact_zone = NodePath("ImpactZone")
+metadata/_custom_type_script = "uid://pjwtd47uvpe5"
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897155246]
+
+[node name="ImpactZone" type="Area2D" parent="." unique_id=572058267]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactZone" unique_id=1711222688]
+shape = SubResource("CapsuleShape2D_571qm")

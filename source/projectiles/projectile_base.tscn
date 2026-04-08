@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dus67rj5fp4uj"]
 
-[ext_resource type="Script" uid="uid://pjwtd47uvpe5" path="res://source/entities/projectile/projectile_base.gd" id="1_igtt6"]
-[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/attributes/attribute_component.gd" id="2_q5ppu"]
+[ext_resource type="Script" uid="uid://pjwtd47uvpe5" path="res://source/projectiles/projectile_base.gd" id="1_igtt6"]
+[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="2_q5ppu"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="3_1ul48"]
-[ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="3_dtqek"]
+[ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/abilities_component.gd" id="3_dtqek"]
 [ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="4_px8ea"]
 
 [sub_resource type="Resource" id="Resource_ykh0r"]

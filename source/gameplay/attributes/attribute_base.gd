@@ -1,11 +1,10 @@
 class_name AttributeBase
 extends Resource
 
-@export var attribute_name: StringName = &"Attribute"
 @export var base_value: float = 1.0
 
 func get_attribute_name() -> StringName:
-	return attribute_name
+	return &"Attribute"
 	
 func _get_applicable_modifiers(modifiers: Array[AttributeModifierBase], modifier_applicability: Array[AttributeModifierBase.ModifierApplicability] = []) -> Array[AttributeModifierBase]:
 	var applicable_modifiers: Array[AttributeModifierBase] = []
@@ -50,8 +49,8 @@ func get_effective_value(modifiers: Array[AttributeModifierBase] = []) -> float:
 	var applicable_modifiers = _get_applicable_read_modifiers(modifiers)
 	return _apply_modifiers_to_value(base_value, applicable_modifiers)
 	
-func on_apply_modifier(_modifiers: Array[AttributeModifierBase], _new_modifier: AttributeModifierBase) -> void:
+func on_apply_modifier(_new_modifier: AttributeModifierBase, _existing_modifiers: Array[AttributeModifierBase]) -> void:
 	pass
 
-func on_remove_modifier(_modifiers: Array[AttributeModifierBase], _removed_modifier: AttributeModifierBase) -> void:
+func on_remove_modifier(_removed_modifier: AttributeModifierBase, _existing_modifiers: Array[AttributeModifierBase]) -> void:
 	pass

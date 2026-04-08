@@ -1,32 +1,25 @@
-class_name AttributeComponent
+class_name ModifiersComponent
 extends ComponentBase
 
-@export var attributes: AttributeSet
 @export var modifiers: Array[AttributeModifierBase] = []
 
+signal on_apply_modifier(new_modifier: AttributeModifierBase, existing_modifiers: Array[AttributeModifierBase])
+signal on_remove_modifier(removed_modifier: AttributeModifierBase, existing_modifiers: Array[AttributeModifierBase])
+
 func apply_modifier(modifier: AttributeModifierBase) -> void:
-	# fire on_apply events on pooled attributes
+	on_apply_modifier.emit(modifier, modifiers)
 	modifiers.append(modifier)
 	
 func remove_modifier(modifier: AttributeModifierBase) -> void:
-	# fire on_remove events on pooled attributes
+	on_remove_modifier.emit(modifier, modifiers)
 	modifiers.erase(modifier)
 
-func get_value(attribute_name: StringName, default: float = 0.0) -> float:
-	var attribute = get_attribute(attribute_name)
-	if attribute:
-		return attribute.get_effective_value(modifiers)
-	else:
-		return default
-
-func get_attribute(attribute_name: StringName) -> AttributeBase:
-	if attributes:
-		return attributes.get_attribute(attribute_name)
-	return null
-
-func register_attribute(attribute: AttributeBase) -> void:
-	if attributes:
-		attributes.register_attribute(attribute)
+func get_modifiers_for(attr_name: StringName) -> Array[AttributeModifierBase]:
+	var result: Array[AttributeModifierBase] = []
+	for modifier in modifiers:
+		if attr_name in modifier.affected_attributes:
+			result.append(modifier)
+	return result
 
 func _tick_modifiers(delta_time: float) -> void:
 	for modifier in modifiers:
@@ -37,8 +30,6 @@ func _tick_modifiers(delta_time: float) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super._ready()
-	if attributes:
-		attributes.initialise_attributes()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

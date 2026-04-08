@@ -19,7 +19,14 @@ func get_value(attribute_name: StringName, modifiers: Array[AttributeModifierBas
 	return attribute.get_effective_value(modifiers) if attribute else default
 
 func get_attribute(attribute_name: StringName) -> AttributeBase:
+	if not _attribute_map_ready:
+		initialise_attributes()
 	return _attribute_map.get(attribute_name)
+
+func get_attribute_names() -> Array[StringName]:
+	if not _attribute_map_ready:
+		initialise_attributes()
+	return _attribute_map.keys()
 
 func register_attribute(attribute: AttributeBase) -> void:
 	var attribute_name = attribute.get_attribute_name()
