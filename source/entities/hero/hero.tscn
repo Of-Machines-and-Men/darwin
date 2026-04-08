@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="4_r407p"]
 [ext_resource type="Script" uid="uid://y1agsw786bul" path="res://source/gameplay/attributes/attribute_set.gd" id="4_tdmhf"]
 [ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="5_dh7n1"]
+[ext_resource type="Script" uid="uid://b5rbiiq4lq88r" path="res://source/managers/StateMachine/HeroStateMachine.gd" id="9_3cjjk"]
 
 [sub_resource type="Resource" id="Resource_yojrb"]
 script = ExtResource("4_tdmhf")
@@ -52,3 +53,6 @@ debug_color = Color(0, 0.6, 0.19607843, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1465123318]
 texture = ExtResource("5_dh7n1")
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=1079904847]
+script = ExtResource("9_3cjjk")

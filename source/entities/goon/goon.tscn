@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="6_lyguq"]
 [ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="7_68cb5"]
 [ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="8_73fiq"]
+[ext_resource type="Script" uid="uid://dqs84fcob3c7e" path="res://source/managers/StateMachine/GoonStateMachine.gd" id="9_odqn5"]
 
 [sub_resource type="Resource" id="Resource_643ot"]
 script = ExtResource("4_u0c5a")
@@ -51,3 +52,6 @@ debug_color = Color(0, 0.6, 0.11764706, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1356718512]
 texture = ExtResource("8_73fiq")
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=1542167787]
+script = ExtResource("9_odqn5")
