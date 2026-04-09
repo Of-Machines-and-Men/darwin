@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://b8aniekowynst" path="res://source/gameplay/attributes/resources/health.gd" id="14_lfvaw"]
 [ext_resource type="Script" uid="uid://bnuirvjmb6dn6" path="res://source/components/movement/movement_component.gd" id="15_0eujw"]
 [ext_resource type="Script" uid="uid://dtrhwbv2k3alv" path="res://source/gameplay/attributes/resources/move_speed.gd" id="16_j08x1"]
+[ext_resource type="Script" uid="uid://b5rbiiq4lq88r" path="res://source/managers/StateMachine/HeroStateMachine.gd" id="9_3cjjk"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yojrb"]
 height = 60.0
@@ -139,3 +140,5 @@ navigation_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://bnuirvjmb6dn6"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1130958806]
+[node name="StateMachine" type="Node2D" parent="." unique_id=1079904847]
+script = ExtResource("9_3cjjk")
