@@ -11,11 +11,11 @@ func get_attribute_name() -> StringName:
 	return &"PoolAttribute"
 
 func _get_applicable_deplete_modifiers(modifiers: Array[AttributeModifierBase]):
-	var applicability = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_DEPLETE]
+	var applicability: Array[AttributeModifierBase.ModifierApplicability] = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_DEPLETE]
 	return _get_applicable_modifiers(modifiers, applicability)
 	
 func _get_applicable_restore_modifiers(modifiers: Array[AttributeModifierBase]):
-	var applicability = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_RESTORE]
+	var applicability: Array[AttributeModifierBase.ModifierApplicability] = [AttributeModifierBase.ModifierApplicability.ALWAYS, AttributeModifierBase.ModifierApplicability.ON_CHANGE, AttributeModifierBase.ModifierApplicability.ON_RESTORE]
 	return _get_applicable_modifiers(modifiers, applicability)
 
 func tick(_delta_time: float):

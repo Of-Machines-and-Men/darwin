@@ -4,3 +4,4 @@
 
 [node name="EntityBase" type="CharacterBody2D" unique_id=1975727175]
 script = ExtResource("1_wc2ou")
+faction = 2

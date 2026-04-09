@@ -7,6 +7,10 @@ extends Resource
 
 var _is_active: bool = false
 
+signal on_activate_ability(ability: AbilityBase)
+signal on_deactivate_ability(ability: AbilityBase)
+signal on_tick_ability(ability: AbilityBase, delta_time: float)
+
 func _process(_caller: EntityBase, _delta_time: float) -> void:
 	pass
 

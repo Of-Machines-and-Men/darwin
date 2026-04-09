@@ -4,35 +4,87 @@
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_c1ety"]
 [ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="4_u0c5a"]
 [ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_vujo8"]
+[ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="6_5lkur"]
 [ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="6_8lcw1"]
+[ext_resource type="Script" uid="uid://bw5biqgt6jaqk" path="res://source/gameplay/attributes/resources/melee_attack_range.gd" id="7_bgitj"]
 [ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="8_73fiq"]
-[ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/abilities_component.gd" id="9_vujo8"]
+[ext_resource type="Script" uid="uid://clrrmtpyxbjgv" path="res://source/gameplay/attributes/resources/melee_attack_speed.gd" id="8_jwlov"]
+[ext_resource type="Script" uid="uid://cbfv2131m1m4o" path="res://source/gameplay/attributes/resources/melee_attack_aoe.gd" id="9_bgitj"]
+[ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="9_vujo8"]
 [ext_resource type="Script" uid="uid://cu8i7xql5j2ev" path="res://source/components/behaviour/behaviour_component.gd" id="10_lyguq"]
 [ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="10_vujo8"]
 [ext_resource type="Script" uid="uid://bctvnj0da6gsr" path="res://source/gameplay/abilities/active/melee_attack_ability.gd" id="11_68cb5"]
+[ext_resource type="Script" uid="uid://cr1pkboxsxpgg" path="res://source/gameplay/behaviours/behaviour_base.gd" id="11_lyguq"]
+[ext_resource type="Script" uid="uid://b2qsxil46mdam" path="res://source/gameplay/behaviours/resources/approach_target.gd" id="12_68cb5"]
 [ext_resource type="Script" uid="uid://uq80dd3eadwy" path="res://source/components/health/health_component.gd" id="12_lyguq"]
+[ext_resource type="Script" uid="uid://bnuirvjmb6dn6" path="res://source/components/movement/movement_component.gd" id="13_8d8x0"]
 [ext_resource type="Script" uid="uid://b8aniekowynst" path="res://source/gameplay/attributes/resources/health.gd" id="13_68cb5"]
+[ext_resource type="Script" uid="uid://dtrhwbv2k3alv" path="res://source/gameplay/attributes/resources/move_speed.gd" id="15_alwcr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1ety"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cy7b"]
 radius = 500.0
 
+[sub_resource type="Resource" id="Resource_7ll25"]
+resource_local_to_scene = true
+script = ExtResource("6_5lkur")
+metadata/_custom_type_script = "uid://1tjkp68d02a4"
+
+[sub_resource type="Resource" id="Resource_4p85c"]
+resource_local_to_scene = true
+script = ExtResource("7_bgitj")
+base_value = 20.0
+metadata/_custom_type_script = "uid://bw5biqgt6jaqk"
+
+[sub_resource type="Resource" id="Resource_sfapr"]
+resource_local_to_scene = true
+script = ExtResource("8_jwlov")
+metadata/_custom_type_script = "uid://clrrmtpyxbjgv"
+
+[sub_resource type="Resource" id="Resource_jwlov"]
+resource_local_to_scene = true
+script = ExtResource("9_bgitj")
+base_value = 5.0
+metadata/_custom_type_script = "uid://cbfv2131m1m4o"
+
+[sub_resource type="Resource" id="Resource_alwcr"]
+resource_local_to_scene = true
+script = ExtResource("4_u0c5a")
+attributes = Array[ExtResource("2_c1ety")]([SubResource("Resource_7ll25"), SubResource("Resource_4p85c"), SubResource("Resource_sfapr"), SubResource("Resource_jwlov")])
+metadata/_custom_type_script = "uid://dlony6exa8o5p"
+
 [sub_resource type="Resource" id="Resource_73fiq"]
 resource_local_to_scene = true
 script = ExtResource("11_68cb5")
 projectile_scene = ExtResource("10_vujo8")
+attributes = SubResource("Resource_alwcr")
+priority = 1
 metadata/_custom_type_script = "uid://bctvnj0da6gsr"
 
 [sub_resource type="Resource" id="Resource_643ot"]
+resource_local_to_scene = true
 script = ExtResource("13_68cb5")
 starting_value = 10.0
 base_value = 10.0
 metadata/_custom_type_script = "uid://b8aniekowynst"
 
-[sub_resource type="Resource" id="Resource_68cb5"]
+[sub_resource type="Resource" id="Resource_8d8x0"]
+resource_local_to_scene = true
+script = ExtResource("12_68cb5")
+priority = 1
+metadata/_custom_type_script = "uid://b2qsxil46mdam"
+
+[sub_resource type="Resource" id="Resource_5cy7b"]
+resource_local_to_scene = true
+script = ExtResource("15_alwcr")
+base_value = 100.0
+metadata/_custom_type_script = "uid://dtrhwbv2k3alv"
+
+[sub_resource type="Resource" id="Resource_5lkur"]
 resource_local_to_scene = true
 script = ExtResource("4_u0c5a")
+attributes = Array[ExtResource("2_c1ety")]([SubResource("Resource_5cy7b")])
 metadata/_custom_type_script = "uid://dlony6exa8o5p"
 
 [node name="Goon" type="CharacterBody2D" unique_id=1456911765 node_paths=PackedStringArray("modifiers", "health", "behaviour")]
@@ -41,6 +93,7 @@ script = ExtResource("1_odqn5")
 modifiers = NodePath("ModifiersComponent")
 health = NodePath("HealthComponent")
 behaviour = NodePath("BehaviourComponent")
+faction = 1
 threat_rating = 1.0
 metadata/_custom_type_script = "uid://b4m52nppdykhp"
 
@@ -70,8 +123,17 @@ metadata/_custom_type_script = "uid://uq80dd3eadwy"
 script = ExtResource("6_8lcw1")
 metadata/_custom_type_script = "uid://bwbu46foc2wiv"
 
-[node name="BehaviourComponent" type="Node" parent="." unique_id=2117900150 node_paths=PackedStringArray("vision_zone")]
+[node name="BehaviourComponent" type="Node" parent="." unique_id=2117900150 node_paths=PackedStringArray("vision_zone", "navigation_agent")]
 script = ExtResource("10_lyguq")
 vision_zone = NodePath("../VisionZone")
-attributes = SubResource("Resource_68cb5")
+behaviours = Array[ExtResource("11_lyguq")]([SubResource("Resource_8d8x0")])
+navigation_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://cu8i7xql5j2ev"
+
+[node name="MovementComponent" type="Node" parent="." unique_id=1082464282 node_paths=PackedStringArray("navigation_agent")]
+script = ExtResource("13_8d8x0")
+attributes = SubResource("Resource_5lkur")
+navigation_agent = NodePath("../NavigationAgent2D")
+metadata/_custom_type_script = "uid://bnuirvjmb6dn6"
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1232349178]

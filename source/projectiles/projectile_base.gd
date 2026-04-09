@@ -2,8 +2,10 @@ class_name ProjectileBase
 extends Node2D
 
 @export var impact_zone: Area2D
+@export var impact_shape: CollisionShape2D
+@export var sprite: Sprite2D
+@export var base_sprite_radius: float = 5.0
 @export var speed: float = 0.0
-@export var max_range: float = 50.0
 @export var lifetime: float = 0.2
 
 signal on_hit(target: EntityBase, damage: float, tags: Array[StringName])
@@ -14,17 +16,33 @@ var _damage: float = 0.0
 var _damage_tags: Array[StringName] = []
 var _distance_travelled: float = 0.0
 var _lifetime_timer: float = 0.0
+var _max_range: float = 0.0
 
 func initialise(spawning_entity: EntityBase, target: EntityBase, resolved_values: Dictionary) -> void:
 	_spawner = spawning_entity
-	_damage = resolved_values.get(AttributeNames.BASE_MELEE_DAMAGE, 0.0)
+	_damage = resolved_values.get(AttributeNames.MELEE_ATTACK_DAMAGE, 0.0)
+	_max_range = resolved_values.get(AttributeNames.MELEE_ATTACK_RANGE, 0.0)
 	_lifetime_timer = lifetime
 	if target:
 		_direction = (target.global_position - spawning_entity.global_position).normalized()
+	_apply_aoe_scaling(resolved_values)
+	_determine_spawn_location(spawning_entity, target, resolved_values)
+
+func _apply_aoe_scaling(resolved_values: Dictionary) -> void:
+	var aoe_radius = resolved_values.get(AttributeNames.MELEE_ATTACK_AOE, 10.0)
+	if impact_shape:
+		var impact_zone_collider_shape = impact_shape.shape
+		if impact_zone_collider_shape:
+			impact_zone_collider_shape.radius = aoe_radius
+	if sprite:
+		sprite.scale = Vector2.ONE * (aoe_radius / base_sprite_radius)
+
+func _determine_spawn_location(spawning_entity: EntityBase, target: EntityBase, resolved_values: Dictionary) -> void:
+	var direction = target.global_position.direction_to(spawning_entity.global_position)
+	var aoe_radius = resolved_values.get(AttributeNames.MELEE_ATTACK_AOE, 10.0)
+	global_position = target.global_position + direction * aoe_radius
 
 func _ready() -> void:
-	if _spawner:
-		global_position = _spawner.global_position
 	if impact_zone:
 		impact_zone.body_entered.connect(_on_body_entered)
 		# await one physics frame so the engine detects bodies already overlapping on spawn
@@ -43,7 +61,7 @@ func _physics_process(delta: float) -> void:
 		var movement = _direction * speed * delta
 		global_position += movement
 		_distance_travelled += movement.length()
-		if _distance_travelled >= max_range:
+		if _distance_travelled >= _max_range:
 			queue_free()
 
 func _on_body_entered(body: Node) -> void:

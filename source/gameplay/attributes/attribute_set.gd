@@ -30,7 +30,7 @@ func get_attribute_names() -> Array[StringName]:
 
 func register_attribute(attribute: AttributeBase) -> void:
 	var attribute_name = attribute.get_attribute_name()
-	if not get_attribute(attribute_name):
+	if not _attribute_map.get(attribute_name):
 		_attribute_map[attribute_name] = attribute
 	else:
 		push_warning("AttributeSet: duplicate attribute name '%s' — skipping" % attribute_name)

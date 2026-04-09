@@ -2,16 +2,26 @@
 
 [ext_resource type="Script" uid="uid://pjwtd47uvpe5" path="res://source/projectiles/projectile_base.gd" id="1_571qm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_571qm"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_571qm"]
+resource_local_to_scene = true
+size = Vector2(10, 10)
 
-[node name="MeleeProjectile" type="Node2D" unique_id=705210077 node_paths=PackedStringArray("impact_zone")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_571qm"]
+resource_local_to_scene = true
+
+[node name="MeleeProjectile" type="Node2D" unique_id=705210077 node_paths=PackedStringArray("impact_zone", "impact_shape", "sprite")]
 script = ExtResource("1_571qm")
 impact_zone = NodePath("ImpactZone")
+impact_shape = NodePath("ImpactZone/CollisionShape2D")
+sprite = NodePath("Sprite2D")
+base_sprite_radius = 5.0
+lifetime = 0.5
 metadata/_custom_type_script = "uid://pjwtd47uvpe5"
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1897155246]
+texture = SubResource("PlaceholderTexture2D_571qm")
 
 [node name="ImpactZone" type="Area2D" parent="." unique_id=572058267]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ImpactZone" unique_id=1711222688]
-shape = SubResource("CapsuleShape2D_571qm")
+shape = SubResource("CircleShape2D_571qm")

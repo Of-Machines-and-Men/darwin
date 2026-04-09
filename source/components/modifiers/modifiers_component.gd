@@ -5,6 +5,7 @@ extends ComponentBase
 
 signal on_apply_modifier(new_modifier: AttributeModifierBase, existing_modifiers: Array[AttributeModifierBase])
 signal on_remove_modifier(removed_modifier: AttributeModifierBase, existing_modifiers: Array[AttributeModifierBase])
+signal on_tick_modifier(modifier: AttributeModifierBase, delta_time: float)
 
 func apply_modifier(modifier: AttributeModifierBase) -> void:
 	on_apply_modifier.emit(modifier, modifiers)
