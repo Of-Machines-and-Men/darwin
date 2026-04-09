@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dus67rj5fp4uj"]
+
+[ext_resource type="Script" uid="uid://pjwtd47uvpe5" path="res://source/projectiles/projectile_base.gd" id="1_igtt6"]
+[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="2_q5ppu"]
+[ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="3_dtqek"]
+
+[node name="ProjectileBase" type="Node2D" unique_id=723721921]
+script = ExtResource("1_igtt6")
+
+[node name="AttributeComponent" type="Node" parent="." unique_id=304873335]
+script = ExtResource("2_q5ppu")
+metadata/_custom_type_script = "uid://bwbu46foc2wiv"
+
+[node name="AbilityComponent" type="Node" parent="." unique_id=785666682]
+script = ExtResource("3_dtqek")
+metadata/_custom_type_script = "uid://c7aqkxjygkdfs"

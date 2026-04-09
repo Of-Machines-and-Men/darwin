@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://crd20w0gi0s7t"]
+
+[ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_ds5ku"]
+[ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="3_ds5ku"]
+[ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="5_dh7n1"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yojrb"]
+height = 60.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qty01"]
+radius = 500.0
+
+[node name="Hero" type="CharacterBody2D" unique_id=334832573]
+motion_mode = 1
+script = ExtResource("1_ds5ku")
+metadata/_custom_type_script = "uid://b4m52nppdykhp"
+
+[node name="Collider" type="CollisionShape2D" parent="." unique_id=951855046]
+shape = SubResource("CapsuleShape2D_yojrb")
+
+[node name="VisionZone" type="Area2D" parent="." unique_id=455293421]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="VisionZone" unique_id=657979487]
+shape = SubResource("CircleShape2D_qty01")
+debug_color = Color(0, 0.6, 0.19607843, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1465123318]
+texture = ExtResource("5_dh7n1")
+
+[node name="AttributeComponent" type="Node" parent="." unique_id=2004663492]
+script = ExtResource("3_ds5ku")
+metadata/_custom_type_script = "uid://bwbu46foc2wiv"

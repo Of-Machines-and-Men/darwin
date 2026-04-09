@@ -2,32 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://crd20w0gi0s7t" path="res://source/entities/hero/hero.tscn" id="1_6f61i"]
 [ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="2_rsulj"]
-[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="3_pj3j6"]
-[ext_resource type="Script" uid="uid://bhn468aqmpp2j" path="res://source/gameplay/abilities/movement/engage/approach_target.gd" id="4_m3gt6"]
-[ext_resource type="Script" uid="uid://cypbso6jiqokp" path="res://source/gameplay/abilities/movement/idle/search.gd" id="5_vf1yo"]
-
-[sub_resource type="Resource" id="Resource_rsulj"]
-resource_local_to_scene = true
-script = ExtResource("4_m3gt6")
-priority = 1
-metadata/_custom_type_script = "uid://bhn468aqmpp2j"
-
-[sub_resource type="Resource" id="Resource_pj3j6"]
-resource_local_to_scene = true
-script = ExtResource("5_vf1yo")
-search_radius = 200.0
-metadata/_custom_type_script = "uid://cypbso6jiqokp"
-
-[sub_resource type="Resource" id="Resource_m3gt6"]
-resource_local_to_scene = true
-script = ExtResource("4_m3gt6")
-priority = 1
-metadata/_custom_type_script = "uid://bhn468aqmpp2j"
-
-[sub_resource type="Resource" id="Resource_vf1yo"]
-resource_local_to_scene = true
-script = ExtResource("5_vf1yo")
-metadata/_custom_type_script = "uid://cypbso6jiqokp"
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_424k3"]
 b = Vector2(1150, 0)
@@ -43,17 +17,15 @@ b = Vector2(1150, 650)
 a = Vector2(1150, 0)
 b = Vector2(1150, 650)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ffvco"]
+vertices = PackedVector2Array(1140, 640, 10, 640, 10, 10, 1140, 10)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1150, 0, 1150, 650, 0, 650)])
+
 [node name="SimpleArena" type="Node2D" unique_id=1445853623]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2059071483]
-
-[node name="Hero" parent="." unique_id=806952707 instance=ExtResource("1_6f61i")]
-position = Vector2(418, 268)
-movement_abilities = Array[ExtResource("3_pj3j6")]([SubResource("Resource_rsulj"), SubResource("Resource_pj3j6")])
-
-[node name="Goon" parent="." unique_id=927201230 instance=ExtResource("2_rsulj")]
-position = Vector2(673, 270)
-movement_abilities = Array[ExtResource("3_pj3j6")]([SubResource("Resource_m3gt6"), SubResource("Resource_vf1yo")])
+layer = -1
 
 [node name="WallTop" type="StaticBody2D" parent="." unique_id=4931375]
 
@@ -74,3 +46,21 @@ shape = SubResource("SegmentShape2D_235dx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1620766395]
 shape = SubResource("SegmentShape2D_pk0y3")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1329655926]
+navigation_polygon = SubResource("NavigationPolygon_ffvco")
+
+[node name="Hero" parent="." unique_id=435185539 instance=ExtResource("1_6f61i")]
+position = Vector2(937, 329)
+
+[node name="Goon" parent="." unique_id=1456911765 instance=ExtResource("2_rsulj")]
+position = Vector2(489, 406)
+
+[node name="Goon2" parent="." unique_id=284730953 instance=ExtResource("2_rsulj")]
+position = Vector2(483, 295)
+
+[node name="Goon3" parent="." unique_id=686377632 instance=ExtResource("2_rsulj")]
+position = Vector2(528, 143)
+
+[node name="Goon4" parent="." unique_id=264002107 instance=ExtResource("2_rsulj")]
+position = Vector2(583, 49)
