@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dat72sh28svv4"]
+
+[ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_28qv3"]
+[ext_resource type="Script" uid="uid://p8h4jd3uiolc" path="res://source/scenes/UI/spawn toolbar/spawn_toolbar.gd" id="1_ld4qc"]
+[ext_resource type="PackedScene" uid="uid://cl22eg4jjhsqu" path="res://source/scenes/UI/spawn toolbar/subcomponents/spawn_toolbar_panel.tscn" id="3_28qv3"]
+
+[node name="SpawnToolbar" type="Control" unique_id=105463980 node_paths=PackedStringArray("hotbar_slots_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_28qv3")
+script = ExtResource("1_ld4qc")
+hotbar_slots_container = NodePath("MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=52020131]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -284.0
+offset_top = -114.0
+offset_right = 288.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 50
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=180595349]
+custom_minimum_size = Vector2(580, 76)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ColorRect" unique_id=1623961567]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -286.0
+offset_top = -72.0
+offset_right = 286.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 2
+
+[node name="HotbarSlotsContainer" type="GridContainer" parent="MarginContainer/ColorRect/MarginContainer" unique_id=613041518]
+layout_mode = 2
+columns = 8
+
+[node name="Slot1" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=1554218292 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot2" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=1768850686 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot3" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=1207539850 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot4" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=282660998 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot5" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=208105375 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot6" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=1140035211 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot7" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=1470560549 instance=ExtResource("3_28qv3")]
+layout_mode = 2
+
+[node name="Slot8" parent="MarginContainer/ColorRect/MarginContainer/HotbarSlotsContainer" unique_id=2021944988 instance=ExtResource("3_28qv3")]
+layout_mode = 2

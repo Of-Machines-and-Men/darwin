@@ -39,7 +39,7 @@ func _apply_modifiers_to_value(value: float, applicable_modifiers: Array[Attribu
 				multiplicative_percent_sum += modifier.magnitude
 	
 	accumulated_value += additive_flat_sum
-	accumulated_value *= (1.0 + additive_percent_sum)
+	accumulated_value += (1.0 + additive_percent_sum) * accumulated_value
 	accumulated_value *= (1.0 + multiplicative_percent_sum)
 	accumulated_value *= multiplicative_flat_product
 	
