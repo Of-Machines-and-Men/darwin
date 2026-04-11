@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 FactionManager="*uid://rjq5e1gthucn"
+MutiePointsManager="*res://source/managers/mutie_points_manager.gd"
 
 [physics]
 

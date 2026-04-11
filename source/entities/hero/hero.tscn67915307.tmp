@@ -4,17 +4,10 @@
 [ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="3_ds5ku"]
 [ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="4_shnt3"]
 [ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="5_dh7n1"]
-[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_eyyk0"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="6_0eujw"]
-[ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="7_i8e75"]
 [ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="7_j08x1"]
-[ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="8_2pinh"]
-[ext_resource type="Script" uid="uid://bw5biqgt6jaqk" path="res://source/gameplay/attributes/resources/melee_attack_range.gd" id="8_e6aee"]
 [ext_resource type="Script" uid="uid://b5rbiiq4lq88r" path="res://source/managers/StateMachine/HeroStateMachine.gd" id="9_3cjjk"]
-[ext_resource type="Script" uid="uid://bctvnj0da6gsr" path="res://source/gameplay/abilities/active/melee_attack_ability.gd" id="9_i8e75"]
-[ext_resource type="Script" uid="uid://clrrmtpyxbjgv" path="res://source/gameplay/attributes/resources/melee_attack_speed.gd" id="9_jvlko"]
 [ext_resource type="Script" uid="uid://cu8i7xql5j2ev" path="res://source/components/behaviour/behaviour_component.gd" id="10_e6aee"]
-[ext_resource type="Script" uid="uid://cbfv2131m1m4o" path="res://source/gameplay/attributes/resources/melee_attack_aoe.gd" id="10_jvlko"]
 [ext_resource type="Script" uid="uid://cr1pkboxsxpgg" path="res://source/gameplay/behaviours/behaviour_base.gd" id="11_jvlko"]
 [ext_resource type="Script" uid="uid://b2qsxil46mdam" path="res://source/gameplay/behaviours/resources/approach_target.gd" id="12_dkrcw"]
 [ext_resource type="Script" uid="uid://uq80dd3eadwy" path="res://source/components/health/health_component.gd" id="13_2kaba"]
@@ -27,43 +20,6 @@ height = 60.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qty01"]
 radius = 500.0
-
-[sub_resource type="Resource" id="Resource_dkrcw"]
-resource_local_to_scene = true
-script = ExtResource("7_i8e75")
-base_value = 10.0
-metadata/_custom_type_script = "uid://1tjkp68d02a4"
-
-[sub_resource type="Resource" id="Resource_2kaba"]
-resource_local_to_scene = true
-script = ExtResource("8_e6aee")
-base_value = 50.0
-metadata/_custom_type_script = "uid://bw5biqgt6jaqk"
-
-[sub_resource type="Resource" id="Resource_lfvaw"]
-resource_local_to_scene = true
-script = ExtResource("9_jvlko")
-metadata/_custom_type_script = "uid://clrrmtpyxbjgv"
-
-[sub_resource type="Resource" id="Resource_8f8jw"]
-resource_local_to_scene = true
-script = ExtResource("10_jvlko")
-base_value = 5.0
-metadata/_custom_type_script = "uid://cbfv2131m1m4o"
-
-[sub_resource type="Resource" id="Resource_csyn3"]
-resource_local_to_scene = true
-script = ExtResource("7_j08x1")
-attributes = Array[ExtResource("6_0eujw")]([SubResource("Resource_dkrcw"), SubResource("Resource_2kaba"), SubResource("Resource_lfvaw"), SubResource("Resource_8f8jw")])
-metadata/_custom_type_script = "uid://dlony6exa8o5p"
-
-[sub_resource type="Resource" id="Resource_3ock3"]
-resource_local_to_scene = true
-script = ExtResource("9_i8e75")
-projectile_scene = ExtResource("8_2pinh")
-attributes = SubResource("Resource_csyn3")
-priority = 1
-metadata/_custom_type_script = "uid://bctvnj0da6gsr"
 
 [sub_resource type="Resource" id="Resource_iqbvm"]
 resource_local_to_scene = true
@@ -117,7 +73,6 @@ metadata/_custom_type_script = "uid://bwbu46foc2wiv"
 
 [node name="AbilityComponent" type="Node" parent="." unique_id=1818905616]
 script = ExtResource("4_shnt3")
-abilities = Array[ExtResource("5_eyyk0")]([SubResource("Resource_3ock3")])
 metadata/_custom_type_script = "uid://c7aqkxjygkdfs"
 
 [node name="BehaviourComponent" type="Node" parent="." unique_id=1693257658 node_paths=PackedStringArray("vision_zone", "navigation_agent")]

@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://12o50oghf23p"]
 
+[ext_resource type="Script" path="res://source/scenes/UI/lab parts/upgrade_card.gd" id="1_card"]
+
 [node name="UpgradeCard" type="Node2D" unique_id=70455788]
+script = ExtResource("1_card")
 
 [node name="CardBorder" type="NinePatchRect" parent="." unique_id=723185199]
 offset_right = 40.0
@@ -21,3 +24,9 @@ offset_bottom = 23.0
 [node name="EffectLabel" type="Label" parent="." unique_id=115530746]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="ClickButton" type="Button" parent="." unique_id=200000001]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+flat = true

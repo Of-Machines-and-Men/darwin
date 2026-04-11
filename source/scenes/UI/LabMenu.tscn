@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bgkkbvit0i1ub"]
 
+[ext_resource type="Script" path="res://source/scenes/UI/lab_menu.gd" id="1_labmenu"]
 [ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_k8y2h"]
 [ext_resource type="Texture2D" uid="uid://bsc2bqfxuqw2i" path="res://assets/art/placeholder/ui/topbar.png" id="2_hp2ef"]
 [ext_resource type="Texture2D" uid="uid://wlf1c3drbpmj" path="res://assets/art/placeholder/ui/sidebar.png" id="3_2cxep"]
@@ -21,6 +22,7 @@ border_width_bottom = 3
 border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 
 [node name="LabMenu" type="Node2D" unique_id=166093864]
+script = ExtResource("1_labmenu")
 
 [node name="EvilOverlord" type="AnimatedSprite2D" parent="." unique_id=112097072]
 

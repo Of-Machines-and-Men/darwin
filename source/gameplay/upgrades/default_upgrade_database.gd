@@ -69,7 +69,7 @@ func _build_rare() -> void:
 		UpgradeRarity.Rarity.RARE,
 		[
 			_mod([AttributeNames.MELEE_ATTACK_DAMAGE], AttributeModifierBase.ModifierType.ADDITIVE_PERCENT, 0.25),
-			_mod([AttributeNames.ATTACK_RANGE], AttributeModifierBase.ModifierType.ADDITIVE_PERCENT, 0.25),
+			_mod([AttributeNames.MELEE_ATTACK_RANGE], AttributeModifierBase.ModifierType.ADDITIVE_PERCENT, 0.25),
 		]
 	))
 
