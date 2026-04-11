@@ -7,6 +7,7 @@ signal hero_enraged(stack_count: int)
 
 const GOON_SCENE: PackedScene = preload("res://source/entities/goon/goon.tscn")
 const LAB_MENU_SCENE: PackedScene = preload("res://source/scenes/UI/LabMenu.tscn")
+const ROUND_TRANSITION_SCENE: PackedScene = preload("res://source/scenes/UI/RoundTransition.tscn")
 
 @export var spawn_points: Array[NodePath] = []
 @export var goon_container: NodePath
@@ -30,6 +31,7 @@ var _goon_parent: Node2D
 var _spawn_point_nodes: Array[Marker2D] = []
 var _chosen_upgrades: Array[UpgradeDefinition] = []
 var _lab_menu_instance: LabMenu = null
+var _transition: RoundTransition = null
 var _enrage_stacks: int = 0
 var _upgrade_database: UpgradeDatabase
 var _round_timer: Timer
@@ -46,6 +48,8 @@ func initialise(hero: EntityBase) -> void:
 	_round_timer.one_shot = true
 	_round_timer.timeout.connect(_on_timer_timeout)
 	add_child(_round_timer)
+	_transition = ROUND_TRANSITION_SCENE.instantiate()
+	add_child(_transition)
 	_start_round()
 
 
@@ -111,7 +115,9 @@ func _end_round() -> void:
 	round_ended.emit(round_number)
 	if _hero:
 		_hero.process_mode = Node.PROCESS_MODE_DISABLED
+	await _transition.play_round_end(round_number)
 	_open_lab_menu()
+	await _transition.fade_in()
 
 
 func _open_lab_menu() -> void:
@@ -123,8 +129,10 @@ func _open_lab_menu() -> void:
 
 func _on_upgrade_chosen(definition: UpgradeDefinition) -> void:
 	_chosen_upgrades.append(definition)
+	await _transition.fade_out()
 	_close_lab_menu()
 	_start_round()
+	await _transition.fade_in()
 
 
 func _close_lab_menu() -> void:

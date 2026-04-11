@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://round_transition"]
+
+[ext_resource type="Script" path="res://source/scenes/UI/round_transition.gd" id="1_rtrans"]
+
+[node name="RoundTransition" type="CanvasLayer" unique_id=400000001]
+layer = 10
+script = ExtResource("1_rtrans")
+
+[node name="FadeRect" type="ColorRect" parent="." unique_id=400000002]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+mouse_filter = 2
+
+[node name="BannerContainer" type="CenterContainer" parent="." unique_id=400000003]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="BannerLabel" type="Label" parent="BannerContainer" unique_id=400000004]
+text = "Round 1 Complete!"
+horizontal_alignment = 1
+vertical_alignment = 1
