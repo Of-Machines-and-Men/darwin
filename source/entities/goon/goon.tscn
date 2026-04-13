@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_odqn5"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_c1ety"]
+[ext_resource type="Texture2D" uid="uid://bemkdusk4iw6m" path="res://assets/art/goon/idle.png" id="2_jwlov"]
 [ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="4_u0c5a"]
 [ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_vujo8"]
 [ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="6_5lkur"]
 [ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="6_8lcw1"]
 [ext_resource type="Script" uid="uid://bw5biqgt6jaqk" path="res://source/gameplay/attributes/resources/melee_attack_range.gd" id="7_bgitj"]
-[ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="8_73fiq"]
 [ext_resource type="Script" uid="uid://clrrmtpyxbjgv" path="res://source/gameplay/attributes/resources/melee_attack_speed.gd" id="8_jwlov"]
 [ext_resource type="Script" uid="uid://cbfv2131m1m4o" path="res://source/gameplay/attributes/resources/melee_attack_aoe.gd" id="9_bgitj"]
+[ext_resource type="Script" uid="uid://dqs84fcob3c7e" path="res://source/managers/StateMachine/GoonStateMachine.gd" id="9_odqn5"]
 [ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="9_vujo8"]
 [ext_resource type="Script" uid="uid://cu8i7xql5j2ev" path="res://source/components/behaviour/behaviour_component.gd" id="10_lyguq"]
 [ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="10_vujo8"]
@@ -20,9 +21,9 @@
 [ext_resource type="Script" uid="uid://bnuirvjmb6dn6" path="res://source/components/movement/movement_component.gd" id="13_8d8x0"]
 [ext_resource type="Script" uid="uid://b8aniekowynst" path="res://source/gameplay/attributes/resources/health.gd" id="13_68cb5"]
 [ext_resource type="Script" uid="uid://dtrhwbv2k3alv" path="res://source/gameplay/attributes/resources/move_speed.gd" id="15_alwcr"]
-[ext_resource type="Script" uid="uid://dqs84fcob3c7e" path="res://source/managers/StateMachine/GoonStateMachine.gd" id="9_odqn5"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c1ety"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ll25"]
+size = Vector2(100, 100)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5cy7b"]
 radius = 500.0
@@ -99,7 +100,7 @@ threat_rating = 1.0
 metadata/_custom_type_script = "uid://b4m52nppdykhp"
 
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=1895375635]
-shape = SubResource("CapsuleShape2D_c1ety")
+shape = SubResource("RectangleShape2D_7ll25")
 
 [node name="VisionZone" type="Area2D" parent="." unique_id=933292941]
 
@@ -108,7 +109,8 @@ shape = SubResource("CircleShape2D_5cy7b")
 debug_color = Color(0, 0.6, 0.11764706, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1356718512]
-texture = ExtResource("8_73fiq")
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("2_jwlov")
 
 [node name="AbilityComponent" type="Node" parent="." unique_id=1701600135]
 script = ExtResource("9_vujo8")
@@ -138,5 +140,6 @@ navigation_agent = NodePath("../NavigationAgent2D")
 metadata/_custom_type_script = "uid://bnuirvjmb6dn6"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=1232349178]
+
 [node name="StateMachine" type="Node2D" parent="." unique_id=1542167787]
 script = ExtResource("9_odqn5")

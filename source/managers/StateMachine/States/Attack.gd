@@ -2,13 +2,10 @@ class_name AttackState
 extends State
 
 func enter() -> void:
-	# start attack animation
-	pass
+	(state_machine as GoonStateMachine).play(GoonStateMachine.ATTACK_TEX)
 
 func exit() -> void:
-	# clean up
 	pass
 
 func update(delta: float) -> void:
-	# attack logic
 	pass

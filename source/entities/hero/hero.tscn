@@ -23,7 +23,8 @@
 [ext_resource type="Script" uid="uid://dtrhwbv2k3alv" path="res://source/gameplay/attributes/resources/move_speed.gd" id="16_j08x1"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yojrb"]
-height = 60.0
+radius = 32.0
+height = 158.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qty01"]
 radius = 500.0
@@ -109,6 +110,7 @@ shape = SubResource("CircleShape2D_qty01")
 debug_color = Color(0, 0.6, 0.19607843, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1465123318]
+scale = Vector2(2.5, 2.5)
 texture = ExtResource("5_dh7n1")
 
 [node name="ModifiersComponent" type="Node" parent="." unique_id=2004663492]

@@ -2,13 +2,10 @@ class_name IdleState
 extends State
 
 func enter() -> void:
-	# start idle animation
-	pass
+	(state_machine as GoonStateMachine).play(GoonStateMachine.IDLE_TEX)
 
 func exit() -> void:
-	# clean up
 	pass
 
 func update(delta: float) -> void:
-	# idle logic
 	pass
