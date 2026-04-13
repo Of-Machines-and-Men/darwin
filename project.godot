@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 FactionManager="*uid://rjq5e1gthucn"
 MutiePointsManager="*res://source/managers/mutie_points_manager.gd"
+PlayerManager="*uid://cgkx1p1vp6gow"
+GameManager="*uid://dm7pd5bmed762"
+HeroManager="*uid://cqdgna61u2plb"
+SpawnManager="*uid://dk3ss6nva04uc"
 
 [physics]
 
