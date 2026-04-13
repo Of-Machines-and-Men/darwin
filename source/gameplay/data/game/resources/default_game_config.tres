@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="GameConfig" format=3 uid="uid://cl8w1b4pjr85"]
+
+[ext_resource type="Script" uid="uid://bndfm5435xqs7" path="res://source/gameplay/data/game/game_config.gd" id="1_fuag6"]
+[ext_resource type="Resource" uid="uid://78gso1v0nv7e" path="res://source/gameplay/data/goons/resources/default_hero.tres" id="1_il0u8"]
+[ext_resource type="Script" uid="uid://wf7k7g402fd1" path="res://source/gameplay/data/goons/goon_definition.gd" id="2_j2hk8"]
+[ext_resource type="Resource" uid="uid://bi2inpkh7sciv" path="res://source/gameplay/data/goons/resources/default_goon.tres" id="4_yvxrh"]
+
+[resource]
+script = ExtResource("1_fuag6")
+starting_goons = Array[ExtResource("2_j2hk8")]([ExtResource("4_yvxrh")])
+base_hero = ExtResource("1_il0u8")
+metadata/_custom_type_script = "uid://bndfm5435xqs7"

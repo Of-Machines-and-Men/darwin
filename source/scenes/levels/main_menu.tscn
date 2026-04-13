@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://mqyd1tmo18eh"]
+
+[ext_resource type="PackedScene" uid="uid://cn24rgpp4kgmk" path="res://source/scenes/UI/main menu/main_menu_ui.tscn" id="1_g7oun"]
+[ext_resource type="Resource" uid="uid://cl8w1b4pjr85" path="res://source/gameplay/data/game/resources/default_game_config.tres" id="2_wo71c"]
+
+[node name="MainMenu" type="Node2D" unique_id=572688251]
+
+[node name="MainMenuUi" parent="." unique_id=889376826 instance=ExtResource("1_g7oun")]
+offset_right = 1150.0
+offset_bottom = 650.0
+game_config = ExtResource("2_wo71c")

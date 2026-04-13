@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://dgq2a34r85f6c"]
 
-[ext_resource type="FontFile" uid="uid://6s4v3qqnuknj" path="res://assets/fonts/PermanentMarker-Regular.ttf" id="1_5x3i2"]
+[ext_resource type="FontFile" uid="uid://b11n6fsinkr7b" path="res://assets/fonts/JollyLodger-Regular.ttf" id="1_5x3i2"]
 
 [resource]
 default_font = ExtResource("1_5x3i2")

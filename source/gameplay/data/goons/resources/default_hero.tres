@@ -1,0 +1,76 @@
+[gd_resource type="Resource" script_class="GoonDefinition" format=3 uid="uid://78gso1v0nv7e"]
+
+[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="1_eh7ic"]
+[ext_resource type="Script" uid="uid://cr1pkboxsxpgg" path="res://source/gameplay/behaviours/behaviour_base.gd" id="2_k7nb0"]
+[ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_xqp7i"]
+[ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="3_6xhks"]
+[ext_resource type="Script" uid="uid://c7sgbowaplewh" path="res://source/gameplay/attributes/modifiers/attribute_modifier_base.gd" id="3_a86ba"]
+[ext_resource type="Script" uid="uid://wf7k7g402fd1" path="res://source/gameplay/data/goons/goon_definition.gd" id="4_lshvs"]
+[ext_resource type="Script" uid="uid://bw5biqgt6jaqk" path="res://source/gameplay/attributes/resources/melee_attack_range.gd" id="4_t5qt2"]
+[ext_resource type="Script" uid="uid://clrrmtpyxbjgv" path="res://source/gameplay/attributes/resources/melee_attack_speed.gd" id="5_q4kpp"]
+[ext_resource type="Script" uid="uid://cbfv2131m1m4o" path="res://source/gameplay/attributes/resources/melee_attack_aoe.gd" id="6_cotbd"]
+[ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="7_kwwe7"]
+[ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="8_ptqtg"]
+[ext_resource type="Script" uid="uid://bctvnj0da6gsr" path="res://source/gameplay/abilities/active/melee_attack_ability.gd" id="9_nji47"]
+[ext_resource type="PackedScene" uid="uid://crd20w0gi0s7t" path="res://source/entities/hero/hero.tscn" id="10_7k1fg"]
+[ext_resource type="Script" uid="uid://b2qsxil46mdam" path="res://source/gameplay/behaviours/resources/approach_target.gd" id="12_23mgs"]
+[ext_resource type="Script" uid="uid://b8aniekowynst" path="res://source/gameplay/attributes/resources/health.gd" id="13_q87ir"]
+[ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="14_es1wu"]
+
+[sub_resource type="Resource" id="Resource_ysl1q"]
+resource_local_to_scene = true
+script = ExtResource("3_6xhks")
+base_value = 10.0
+metadata/_custom_type_script = "uid://1tjkp68d02a4"
+
+[sub_resource type="Resource" id="Resource_5r4ec"]
+resource_local_to_scene = true
+script = ExtResource("4_t5qt2")
+base_value = 20.0
+metadata/_custom_type_script = "uid://bw5biqgt6jaqk"
+
+[sub_resource type="Resource" id="Resource_fchli"]
+resource_local_to_scene = true
+script = ExtResource("5_q4kpp")
+metadata/_custom_type_script = "uid://clrrmtpyxbjgv"
+
+[sub_resource type="Resource" id="Resource_uy475"]
+resource_local_to_scene = true
+script = ExtResource("6_cotbd")
+metadata/_custom_type_script = "uid://cbfv2131m1m4o"
+
+[sub_resource type="Resource" id="Resource_gq0cj"]
+script = ExtResource("7_kwwe7")
+attributes = Array[ExtResource("2_xqp7i")]([SubResource("Resource_ysl1q"), SubResource("Resource_5r4ec"), SubResource("Resource_fchli"), SubResource("Resource_uy475")])
+metadata/_custom_type_script = "uid://dlony6exa8o5p"
+
+[sub_resource type="Resource" id="Resource_p375l"]
+resource_local_to_scene = true
+script = ExtResource("9_nji47")
+projectile_scene = ExtResource("8_ptqtg")
+attributes = SubResource("Resource_gq0cj")
+priority = 1
+metadata/_custom_type_script = "uid://bctvnj0da6gsr"
+
+[sub_resource type="Resource" id="Resource_rhb0m"]
+resource_local_to_scene = true
+script = ExtResource("12_23mgs")
+priority = 1
+metadata/_custom_type_script = "uid://b2qsxil46mdam"
+
+[sub_resource type="Resource" id="Resource_s4a34"]
+resource_local_to_scene = true
+script = ExtResource("13_q87ir")
+starting_value = 100.0
+base_value = 100.0
+metadata/_custom_type_script = "uid://b8aniekowynst"
+
+[resource]
+script = ExtResource("4_lshvs")
+display_name = "Hero"
+icon = ExtResource("14_es1wu")
+base_entity = ExtResource("10_7k1fg")
+abilities = Array[ExtResource("1_eh7ic")]([SubResource("Resource_p375l")])
+behaviours = Array[ExtResource("2_k7nb0")]([SubResource("Resource_rhb0m")])
+health_attribute = SubResource("Resource_s4a34")
+metadata/_custom_type_script = "uid://wf7k7g402fd1"

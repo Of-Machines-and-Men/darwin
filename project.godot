@@ -11,13 +11,17 @@ config_version=5
 [application]
 
 config/name="Darwin"
-run/main_scene="uid://dmn4axtt8tfnu"
+run/main_scene="uid://mqyd1tmo18eh"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [autoload]
 
 FactionManager="*uid://rjq5e1gthucn"
+PlayerManager="*uid://cgkx1p1vp6gow"
+GameManager="*uid://dm7pd5bmed762"
+HeroManager="*uid://cqdgna61u2plb"
+SpawnManager="*uid://dk3ss6nva04uc"
 
 [physics]
 
