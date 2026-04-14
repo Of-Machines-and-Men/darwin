@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bgkkbvit0i1ub"]
 
 [ext_resource type="Script" path="res://source/scenes/UI/lab_menu.gd" id="1_labmenu"]
+[ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="5_bg"]
 [ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_k8y2h"]
 [ext_resource type="Texture2D" uid="uid://bsc2bqfxuqw2i" path="res://assets/art/placeholder/ui/topbar.png" id="2_hp2ef"]
 [ext_resource type="Texture2D" uid="uid://wlf1c3drbpmj" path="res://assets/art/placeholder/ui/sidebar.png" id="3_2cxep"]
@@ -23,6 +24,20 @@ border_color = Color(0.101960786, 0.101960786, 0.101960786, 1)
 
 [node name="LabMenu" type="Node2D" unique_id=166093864]
 script = ExtResource("1_labmenu")
+
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=200000001]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="BackgroundLayer" unique_id=200000002]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bg")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="EvilOverlord" type="AnimatedSprite2D" parent="." unique_id=112097072]
 

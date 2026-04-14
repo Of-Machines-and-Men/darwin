@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://crd20w0gi0s7t" path="res://source/entities/hero/hero.tscn" id="1_6f61i"]
 [ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="2_rsulj"]
 [ext_resource type="PackedScene" uid="uid://dat72sh28svv4" path="res://source/scenes/UI/spawn toolbar/spawn_toolbar.tscn" id="3_vwfr3"]
+[ext_resource type="Script" path="res://source/scenes/levels/simple_arena.gd" id="4_arena"]
+[ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="5_bg"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_424k3"]
 b = Vector2(1150, 0)
@@ -24,9 +26,21 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1150, 0, 1150, 650, 0, 650)])
 
 [node name="SimpleArena" type="Node2D" unique_id=1445853623]
+script = ExtResource("4_arena")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=2059071483]
 layer = -1
+
+[node name="Background" type="TextureRect" parent="BackgroundLayer" unique_id=100000001]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_bg")
+expand_mode = 1
+stretch_mode = 1
 
 [node name="GameplayLayer" type="CanvasLayer" parent="." unique_id=1187097256]
 layer = 0
