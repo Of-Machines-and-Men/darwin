@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://dmn4axtt8tfnu"]
 
 [ext_resource type="PackedScene" uid="uid://crd20w0gi0s7t" path="res://source/entities/hero/hero.tscn" id="1_6f61i"]
-[ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="2_rsulj"]
 [ext_resource type="PackedScene" uid="uid://dat72sh28svv4" path="res://source/scenes/UI/spawn toolbar/spawn_toolbar.tscn" id="3_vwfr3"]
 [ext_resource type="Script" path="res://source/scenes/levels/simple_arena.gd" id="4_arena"]
 [ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="5_bg"]
@@ -71,16 +70,18 @@ navigation_polygon = SubResource("NavigationPolygon_ffvco")
 [node name="Hero" parent="GameplayLayer" unique_id=435185539 instance=ExtResource("1_6f61i")]
 position = Vector2(937, 329)
 
-[node name="Goon" parent="GameplayLayer" unique_id=1456911765 instance=ExtResource("2_rsulj")]
+[node name="SpawnPoints" type="Node2D" parent="GameplayLayer" unique_id=300000001]
+
+[node name="Point1" type="Marker2D" parent="GameplayLayer/SpawnPoints" unique_id=300000002]
 position = Vector2(489, 406)
 
-[node name="Goon2" parent="GameplayLayer" unique_id=284730953 instance=ExtResource("2_rsulj")]
+[node name="Point2" type="Marker2D" parent="GameplayLayer/SpawnPoints" unique_id=300000003]
 position = Vector2(483, 295)
 
-[node name="Goon3" parent="GameplayLayer" unique_id=686377632 instance=ExtResource("2_rsulj")]
+[node name="Point3" type="Marker2D" parent="GameplayLayer/SpawnPoints" unique_id=300000004]
 position = Vector2(528, 143)
 
-[node name="Goon4" parent="GameplayLayer" unique_id=264002107 instance=ExtResource("2_rsulj")]
+[node name="Point4" type="Marker2D" parent="GameplayLayer/SpawnPoints" unique_id=300000005]
 position = Vector2(583, 49)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=727384983]

@@ -8,8 +8,8 @@ script = ExtResource("1_card")
 
 [node name="CardBorder" type="NinePatchRect" parent="." unique_id=723185199]
 texture = ExtResource("2_cardtex")
-offset_right = 120.0
-offset_bottom = 180.0
+offset_right = 240.0
+offset_bottom = 360.0
 
 [node name="MarginContainer" type="MarginContainer" parent="CardBorder" unique_id=500000001]
 layout_mode = 1
@@ -47,6 +47,6 @@ horizontal_alignment = 1
 
 [node name="ClickButton" type="Button" parent="." unique_id=200000001]
 layout_mode = 0
-offset_right = 120.0
-offset_bottom = 180.0
+offset_right = 240.0
+offset_bottom = 360.0
 flat = true

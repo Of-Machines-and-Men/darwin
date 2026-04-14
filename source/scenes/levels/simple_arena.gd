@@ -6,8 +6,8 @@ const LAB_MENU_SCENE: PackedScene = preload("res://source/scenes/UI/LabMenu.tscn
 @onready var hero: EntityBase = $GameplayLayer/Hero
 @onready var gameplay_layer: Node = $GameplayLayer
 @onready var ui_layer: CanvasLayer = $UILayer
+@onready var spawn_points: Node2D = $GameplayLayer/SpawnPoints
 
-var _goon_spawn_positions: Array[Vector2] = []
 var _live_goons: Array[EntityBase] = []
 var _lab_menu: LabMenu = null
 var _upgrade_database: UpgradeDatabase
@@ -16,11 +16,7 @@ var _chosen_upgrades: Array[UpgradeDefinition] = []
 func _ready() -> void:
 	_upgrade_database = DefaultUpgradeDatabase.new()
 	MutiePointsManager.register_hero(hero.health)
-
-	for child in gameplay_layer.get_children():
-		if child is EntityBase and child != hero:
-			_goon_spawn_positions.append(child.global_position)
-			_track_goon(child)
+	_spawn_round()
 
 func _track_goon(goon: EntityBase) -> void:
 	_live_goons.append(goon)
@@ -51,10 +47,10 @@ func _on_upgrade_chosen(definition: UpgradeDefinition) -> void:
 
 func _spawn_round() -> void:
 	_live_goons.clear()
-	for pos in _goon_spawn_positions:
+	for point in spawn_points.get_children():
 		var goon: EntityBase = GOON_SCENE.instantiate()
 		gameplay_layer.add_child(goon)
-		goon.global_position = pos
+		goon.global_position = point.global_position
 		for upgrade in _chosen_upgrades:
 			upgrade.apply_to(goon)
 		_track_goon(goon)

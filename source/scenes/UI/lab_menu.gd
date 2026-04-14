@@ -8,9 +8,9 @@ const REROLL_COST: int = 5
 
 var upgrade_database: UpgradeDatabase
 
-@onready var card_slot_1: Marker2D = $CanvasLayer/Control/VBoxContainer/ContentRow/Treadmill/CardSlot_1
-@onready var card_slot_2: Marker2D = $CanvasLayer/Control/VBoxContainer/ContentRow/Treadmill/CardSlot_2
-@onready var card_slot_3: Marker2D = $CanvasLayer/Control/VBoxContainer/ContentRow/Treadmill/CardSlot_3
+@onready var card_slot_1: Control = $CanvasLayer/Control/VBoxContainer/ContentRow/Treadmill/CardSlot_1
+@onready var card_slot_2: Control = $CanvasLayer/Control/VBoxContainer/ContentRow/Treadmill/CardSlot_2
+@onready var card_slot_3: Control = $CanvasLayer/Control/VBoxContainer/ContentRow/Treadmill/CardSlot_3
 @onready var reroll_button: Button = $CanvasLayer/Control/RerollButton
 @onready var mutie_label: Label = $CanvasLayer/Control/VBoxContainer/TopBar/MutiePointsLabel
 @onready var rerolls_label: Label = $CanvasLayer/Control/VBoxContainer/TopBar/RerollsLabel
@@ -24,7 +24,7 @@ func _ready() -> void:
 	_populate(upgrade_database.roll_upgrades(3))
 
 func _populate(upgrades: Array[UpgradeDefinition]) -> void:
-	var slots: Array[Marker2D] = [card_slot_1, card_slot_2, card_slot_3]
+	var slots: Array[Control] = [card_slot_1, card_slot_2, card_slot_3]
 	for slot in slots:
 		for child in slot.get_children():
 			child.queue_free()
