@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mcfcgwecc711" path="res://source/scenes/UI/main_menu.gd" id="1_krejq"]
 [ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_lrbq2"]
+[ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="3_4qiku"]
 
 [node name="MainMenu" type="Control" unique_id=1977385071]
 layout_mode = 3
@@ -13,23 +14,44 @@ grow_vertical = 2
 theme = ExtResource("1_lrbq2")
 script = ExtResource("1_krejq")
 
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=258410421]
+layer = -1
+
+[node name="Background" type="TextureRect" parent="BackgroundLayer" unique_id=752030791]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4qiku")
+expand_mode = 1
+stretch_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=1370596597]
+layout_mode = 0
+offset_top = 84.0
+offset_right = 1152.0
+offset_bottom = 187.0
+theme_override_colors/font_color = Color(0, 0, 0, 0.61960787)
+theme_override_font_sizes/font_size = 72
+text = "DARWIN"
+horizontal_alignment = 1
+
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1638102393]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -44.0
+offset_left = 640.00006
+offset_top = -269.0
+offset_right = 20.0
+offset_bottom = 77.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_constants/separation = 4
+rotation = -0.22156368
+theme_override_constants/separation = 22
 alignment = 1
-
-[node name="Title" type="Label" parent="VBoxContainer" unique_id=1370596597]
-layout_mode = 2
-theme_override_font_sizes/font_size = 72
-text = "IM LOWKEY EVIL"
-horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=122436950]
 layout_mode = 2
