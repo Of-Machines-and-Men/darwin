@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_ds5ku"]
 [ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="3_ds5ku"]
 [ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="4_shnt3"]
-[ext_resource type="Texture2D" uid="uid://5s02jj0bwhyt" path="res://assets/art/placeholder/hero.png" id="5_dh7n1"]
+[ext_resource type="Texture2D" uid="uid://3sgwv7ykwsuq" path="res://assets/art/hero/heroIdle.png" id="5_dh7n1"]
 [ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_eyyk0"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="6_0eujw"]
 [ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="7_i8e75"]
@@ -22,8 +22,8 @@
 [ext_resource type="Script" uid="uid://bnuirvjmb6dn6" path="res://source/components/movement/movement_component.gd" id="15_0eujw"]
 [ext_resource type="Script" uid="uid://dtrhwbv2k3alv" path="res://source/gameplay/attributes/resources/move_speed.gd" id="16_j08x1"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yojrb"]
-height = 60.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jvlko"]
+size = Vector2(100, 100)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qty01"]
 radius = 500.0
@@ -37,7 +37,7 @@ metadata/_custom_type_script = "uid://1tjkp68d02a4"
 [sub_resource type="Resource" id="Resource_2kaba"]
 resource_local_to_scene = true
 script = ExtResource("8_e6aee")
-base_value = 50.0
+base_value = 150.0
 metadata/_custom_type_script = "uid://bw5biqgt6jaqk"
 
 [sub_resource type="Resource" id="Resource_lfvaw"]
@@ -100,7 +100,7 @@ threat_rating = 1.0
 metadata/_custom_type_script = "uid://b4m52nppdykhp"
 
 [node name="Collider" type="CollisionShape2D" parent="." unique_id=951855046]
-shape = SubResource("CapsuleShape2D_yojrb")
+shape = SubResource("RectangleShape2D_jvlko")
 
 [node name="VisionZone" type="Area2D" parent="." unique_id=455293421]
 
@@ -109,6 +109,7 @@ shape = SubResource("CircleShape2D_qty01")
 debug_color = Color(0, 0.6, 0.19607843, 0.41960785)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1465123318]
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("5_dh7n1")
 
 [node name="ModifiersComponent" type="Node" parent="." unique_id=2004663492]

@@ -1,32 +1,52 @@
 [gd_scene format=3 uid="uid://12o50oghf23p"]
 
 [ext_resource type="Script" path="res://source/scenes/UI/lab parts/upgrade_card.gd" id="1_card"]
+[ext_resource type="Texture2D" uid="uid://d0ibui02aruh3" path="res://assets/art/placeholder/ui/card.png" id="2_cardtex"]
 
 [node name="UpgradeCard" type="Node2D" unique_id=70455788]
 script = ExtResource("1_card")
 
 [node name="CardBorder" type="NinePatchRect" parent="." unique_id=723185199]
-offset_right = 40.0
-offset_bottom = 40.0
+texture = ExtResource("2_cardtex")
+offset_right = 240.0
+offset_bottom = 360.0
 
-[node name="RarityLabel" type="Label" parent="." unique_id=1253140830]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="MarginContainer" type="MarginContainer" parent="CardBorder" unique_id=500000001]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
 
-[node name="NameLabel" type="Label" parent="." unique_id=394267737]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="VBoxContainer" type="VBoxContainer" parent="CardBorder/MarginContainer" unique_id=500000002]
+layout_mode = 2
 
-[node name="Injector" type="AnimatedSprite2D" parent="." unique_id=1760578323]
+[node name="NameLabel" type="Label" parent="CardBorder/MarginContainer/VBoxContainer" unique_id=394267737]
+layout_mode = 2
+horizontal_alignment = 1
 
-[node name="UnitRunner" type="AnimatedSprite2D" parent="." unique_id=27305450]
+[node name="RarityLabel" type="Label" parent="CardBorder/MarginContainer/VBoxContainer" unique_id=1253140830]
+layout_mode = 2
+horizontal_alignment = 1
 
-[node name="EffectLabel" type="Label" parent="." unique_id=115530746]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="CardImage" type="TextureRect" parent="CardBorder/MarginContainer/VBoxContainer" unique_id=500000003]
+layout_mode = 2
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="EffectLabel" type="Label" parent="CardBorder/MarginContainer/VBoxContainer" unique_id=115530746]
+layout_mode = 2
+autowrap_mode = 2
+horizontal_alignment = 1
 
 [node name="ClickButton" type="Button" parent="." unique_id=200000001]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 240.0
+offset_bottom = 360.0
 flat = true
