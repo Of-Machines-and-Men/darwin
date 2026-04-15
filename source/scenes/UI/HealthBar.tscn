@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dmvf78pvqljgw"]
 
+[ext_resource type="Script" uid="uid://tssdy2pp3o7b" path="res://source/scenes/UI/HealthBar.gd" id="0_hbscr"]
 [ext_resource type="Texture2D" uid="uid://bsc2bqfxuqw2i" path="res://assets/art/placeholder/ui/topbar.png" id="1_xfxxq"]
 [ext_resource type="Shader" uid="uid://capwmpe4ebkhg" path="res://source/scenes/UI/HealthBar.gdshader" id="2_s0xsl"]
 [ext_resource type="Texture2D" uid="uid://dns61ium3tmo8" path="res://assets/art/placeholder/ui/HealthBarInner.png" id="3_s0xsl"]
@@ -30,6 +31,16 @@ offset_right = 48.0
 offset_bottom = -528.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("0_hbscr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=499502844]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_xfxxq")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=43784738]
 material = SubResource("ShaderMaterial_jkid6")
@@ -37,6 +48,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = 4.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_s0xsl")
@@ -71,12 +84,3 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="." unique_id=499502844]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("1_xfxxq")

@@ -68,3 +68,135 @@ text = "CREDITS"
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=962817154]
 layout_mode = 2
 text = "QUIT"
+
+[node name="SettingsPanel" type="Panel" parent="." unique_id=987654321]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="SettingsPanel" unique_id=987654322]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 60.0
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="SettingsContent" type="VBoxContainer" parent="SettingsPanel" unique_id=111111001]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 70.0
+offset_right = 480.0
+offset_bottom = 250.0
+theme_override_constants/separation = 20
+
+[node name="MasterVolumeRow" type="HBoxContainer" parent="SettingsPanel/SettingsContent" unique_id=111111002]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="SettingsPanel/SettingsContent/MasterVolumeRow" unique_id=111111003]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master Volume"
+
+[node name="MasterSlider" type="HSlider" parent="SettingsPanel/SettingsContent/MasterVolumeRow" unique_id=111111004]
+layout_mode = 2
+size_flags_horizontal = 3
+min_value = 0.0
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="FullscreenRow" type="HBoxContainer" parent="SettingsPanel/SettingsContent" unique_id=111111005]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="SettingsPanel/SettingsContent/FullscreenRow" unique_id=111111006]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Fullscreen"
+
+[node name="FullscreenCheck" type="CheckButton" parent="SettingsPanel/SettingsContent/FullscreenRow" unique_id=111111007]
+layout_mode = 2
+
+[node name="CloseButton" type="Button" parent="SettingsPanel" unique_id=987654323]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 260.0
+offset_right = 300.0
+offset_bottom = 295.0
+text = "Close"
+
+[node name="CreditsPanel" type="Panel" parent="." unique_id=876543210]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="CreditsPanel" unique_id=876543211]
+layout_mode = 0
+offset_right = 500.0
+offset_bottom = 60.0
+text = "Credits"
+horizontal_alignment = 1
+
+[node name="Content" type="Label" parent="CreditsPanel" unique_id=876543213]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 69.0
+offset_right = 480.0
+offset_bottom = 239.0
+text = "Programmers
+Fiachna Carter & Matthew Holmes
+ARtist
+April Banner"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Content2" type="Label" parent="CreditsPanel" unique_id=2017732779]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 69.0
+offset_right = 480.0
+offset_bottom = 239.0
+text = "Programmers
+Fiachna Carter & Matthew Holmes
+ARtist
+April Banner"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="CloseButton" type="Button" parent="CreditsPanel" unique_id=876543212]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 260.0
+offset_right = 300.0
+offset_bottom = 295.0
+text = "Close"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="SettingsPanel/CloseButton" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="CreditsPanel/CloseButton" to="." method="_on_close_pressed"]
+[connection signal="value_changed" from="SettingsPanel/SettingsContent/MasterVolumeRow/MasterSlider" to="." method="_on_master_volume_changed"]
+[connection signal="toggled" from="SettingsPanel/SettingsContent/FullscreenRow/FullscreenCheck" to="." method="_on_fullscreen_toggled"]

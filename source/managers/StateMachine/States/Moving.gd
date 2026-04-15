@@ -2,10 +2,10 @@ class_name WalkState
 extends State
 
 func enter() -> void:
-	(state_machine as GoonStateMachine).play(GoonStateMachine.MOVE_TEX)
+	state_machine.play(enter_texture)
 
 func exit() -> void:
 	pass
 
-func update(delta: float) -> void:
+func update(_delta: float) -> void:
 	pass

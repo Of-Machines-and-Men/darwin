@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://dmn4axtt8tfnu"]
 
 [ext_resource type="PackedScene" uid="uid://crd20w0gi0s7t" path="res://source/entities/hero/hero.tscn" id="1_6f61i"]
+[ext_resource type="PackedScene" uid="uid://dmvf78pvqljgw" path="res://source/scenes/UI/HealthBar.tscn" id="6_hbar"]
 [ext_resource type="PackedScene" uid="uid://dat72sh28svv4" path="res://source/scenes/UI/spawn toolbar/spawn_toolbar.tscn" id="3_vwfr3"]
 [ext_resource type="Script" path="res://source/scenes/levels/simple_arena.gd" id="4_arena"]
+[ext_resource type="Script" path="res://source/managers/spawn_manager.gd" id="5_spawn"]
 [ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="5_bg"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_424k3"]
@@ -26,6 +28,9 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(0, 0, 1150, 0, 1150, 65
 
 [node name="SimpleArena" type="Node2D" unique_id=1445853623]
 script = ExtResource("4_arena")
+
+[node name="SpawnManager" type="Node" parent="." unique_id=902000001]
+script = ExtResource("5_spawn")
 
 [node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=2059071483]
 layer = -1
@@ -85,5 +90,39 @@ position = Vector2(528, 143)
 position = Vector2(583, 49)
 
 [node name="UILayer" type="CanvasLayer" parent="." unique_id=727384983]
+
+[node name="HealthBar" parent="UILayer" unique_id=999000010 instance=ExtResource("6_hbar")]
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_bottom = 120.0
+
+[node name="SpawnsLabel" type="Label" parent="UILayer" unique_id=901000002]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = -130.0
+offset_right = 75.0
+offset_bottom = -98.0
+anchor_top = 1.0
+anchor_bottom = 1.0
+theme_override_font_sizes/font_size = 20
+text = "Spawns: 5"
+horizontal_alignment = 1
+
+[node name="RoundTimer" type="Label" parent="UILayer" unique_id=901000001]
+layout_mode = 1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -75.0
+offset_top = 128.0
+offset_right = 75.0
+offset_bottom = 168.0
+theme_override_font_sizes/font_size = 32
+text = "0:40"
+horizontal_alignment = 1
 
 [node name="SpawnToolbar" parent="UILayer" unique_id=105463980 instance=ExtResource("3_vwfr3")]

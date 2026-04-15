@@ -23,6 +23,9 @@ func _physics_process(delta: float) -> void:
 	if current_state:
 		current_state.physics_update(delta)
 
+func play(_texture: Texture2D) -> void:
+	pass
+
 func transition_to(new_state_name: String) -> void:
 	var new_state = states.get(new_state_name.to_lower())
 	if not new_state or new_state == current_state:

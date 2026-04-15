@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://b4m52nppdykhp" path="res://source/entities/entity_base.gd" id="1_odqn5"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="2_c1ety"]
 [ext_resource type="Texture2D" uid="uid://bemkdusk4iw6m" path="res://assets/art/goon/idle.png" id="2_jwlov"]
+[ext_resource type="Texture2D" uid="uid://drpl4rxivjlp0" path="res://assets/art/goon/move.png" id="tex_gmove"]
+[ext_resource type="Texture2D" uid="uid://dqkk5my5k8on6" path="res://assets/art/goon/attack.png" id="tex_gattack"]
+[ext_resource type="Texture2D" uid="uid://detu0qh0mqse6" path="res://assets/art/goon/hurt.png" id="tex_ghurt"]
+[ext_resource type="Texture2D" uid="uid://dik3mew6a7el" path="res://assets/art/goon/goonDead.png" id="tex_gdead"]
 [ext_resource type="Script" uid="uid://dlony6exa8o5p" path="res://source/gameplay/attributes/attribute_set.gd" id="4_u0c5a"]
 [ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_vujo8"]
 [ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="6_5lkur"]
@@ -11,6 +15,11 @@
 [ext_resource type="Script" uid="uid://clrrmtpyxbjgv" path="res://source/gameplay/attributes/resources/melee_attack_speed.gd" id="8_jwlov"]
 [ext_resource type="Script" uid="uid://cbfv2131m1m4o" path="res://source/gameplay/attributes/resources/melee_attack_aoe.gd" id="9_bgitj"]
 [ext_resource type="Script" uid="uid://dqs84fcob3c7e" path="res://source/managers/StateMachine/GoonStateMachine.gd" id="9_odqn5"]
+[ext_resource type="Script" uid="uid://bkvvudr42ia5i" path="res://source/managers/StateMachine/States/Idle.gd" id="state_idle"]
+[ext_resource type="Script" uid="uid://b414rsifp4ggh" path="res://source/managers/StateMachine/States/Moving.gd" id="state_walk"]
+[ext_resource type="Script" uid="uid://n436wfxwcyxw" path="res://source/managers/StateMachine/States/Attack.gd" id="state_attack"]
+[ext_resource type="Script" uid="uid://d07o38l0u1578" path="res://source/managers/StateMachine/States/Hurt.gd" id="state_hurt"]
+[ext_resource type="Script" uid="uid://d4adbepjsdnn2" path="res://source/managers/StateMachine/States/Death.gd" id="state_death"]
 [ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="9_vujo8"]
 [ext_resource type="Script" uid="uid://cu8i7xql5j2ev" path="res://source/components/behaviour/behaviour_component.gd" id="10_lyguq"]
 [ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="10_vujo8"]
@@ -89,12 +98,13 @@ script = ExtResource("4_u0c5a")
 attributes = Array[ExtResource("2_c1ety")]([SubResource("Resource_5cy7b")])
 metadata/_custom_type_script = "uid://dlony6exa8o5p"
 
-[node name="Goon" type="CharacterBody2D" unique_id=1456911765 node_paths=PackedStringArray("modifiers", "health", "behaviour")]
+[node name="Goon" type="CharacterBody2D" unique_id=1456911765 node_paths=PackedStringArray("modifiers", "health", "behaviour", "abilities")]
 motion_mode = 1
 script = ExtResource("1_odqn5")
 modifiers = NodePath("ModifiersComponent")
 health = NodePath("HealthComponent")
 behaviour = NodePath("BehaviourComponent")
+abilities = NodePath("AbilityComponent")
 faction = 1
 threat_rating = 1.0
 metadata/_custom_type_script = "uid://b4m52nppdykhp"
@@ -143,3 +153,23 @@ metadata/_custom_type_script = "uid://bnuirvjmb6dn6"
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=1542167787]
 script = ExtResource("9_odqn5")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=701000001]
+script = ExtResource("state_idle")
+enter_texture = ExtResource("2_jwlov")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=701000002]
+script = ExtResource("state_walk")
+enter_texture = ExtResource("tex_gmove")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=701000003]
+script = ExtResource("state_attack")
+enter_texture = ExtResource("tex_gattack")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=701000004]
+script = ExtResource("state_hurt")
+enter_texture = ExtResource("tex_ghurt")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=701000005]
+script = ExtResource("state_death")
+enter_texture = ExtResource("tex_gdead")

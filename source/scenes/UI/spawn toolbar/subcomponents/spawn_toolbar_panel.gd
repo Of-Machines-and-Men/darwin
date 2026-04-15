@@ -1,9 +1,9 @@
 class_name SpawnToolbarPanel
 extends Button
 
-@export var cost_label: Label
-@export var name_label: Label
-@export var icon_container: TextureRect
+@onready var cost_label: Label = $MarginContainer/VBoxContainer/Cost
+@onready var name_label: Label = $MarginContainer/VBoxContainer/Name
+@onready var icon_container: TextureRect = $MarginContainer/Icon
 
 signal on_pressed(definition: GoonDefinition)
 
