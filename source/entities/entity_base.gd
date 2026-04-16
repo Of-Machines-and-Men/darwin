@@ -4,17 +4,13 @@ extends CharacterBody2D
 @export var modifiers: ModifiersComponent
 @export var health: HealthComponent
 @export var behaviour: BehaviourComponent
+@export var abilities: AbilityComponent
 @export var faction: FactionManager.Faction
 
 @export var threat_rating: float = 0.0
 
 func _on_death():
-	print(self, " died, rip in pieces...")
-	process_mode = Node.PROCESS_MODE_DISABLED
-	set_collision_layer(0)
-	set_collision_mask(0)
-	hide()
-	queue_free()
+	pass
 
 func _ready() -> void:
 	if health:

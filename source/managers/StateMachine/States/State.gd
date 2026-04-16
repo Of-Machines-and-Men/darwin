@@ -3,6 +3,8 @@ extends Node
 
 var state_machine: StateMachine
 
+@export var enter_texture: Texture2D
+
 func enter() -> void:
 	pass
 

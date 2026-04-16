@@ -4,6 +4,10 @@
 [ext_resource type="Script" uid="uid://bwbu46foc2wiv" path="res://source/components/modifiers/modifiers_component.gd" id="3_ds5ku"]
 [ext_resource type="Script" uid="uid://c7aqkxjygkdfs" path="res://source/components/abilities/ability_component.gd" id="4_shnt3"]
 [ext_resource type="Texture2D" uid="uid://3sgwv7ykwsuq" path="res://assets/art/hero/heroIdle.png" id="5_dh7n1"]
+[ext_resource type="Texture2D" uid="uid://bne3nl4cu34jn" path="res://assets/art/hero/heroMove.png" id="tex_hmove"]
+[ext_resource type="Texture2D" uid="uid://dcd2hacfqbepr" path="res://assets/art/hero/heroSuperpunch1.png" id="tex_hattack"]
+[ext_resource type="Texture2D" uid="uid://c1owcdtgrckbo" path="res://assets/art/hero/heroPain.png" id="tex_hhurt"]
+[ext_resource type="Texture2D" uid="uid://cvb1as0ynrips" path="res://assets/art/hero/heroDead.png" id="tex_hdead"]
 [ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="5_eyyk0"]
 [ext_resource type="Script" uid="uid://7pi5ateqi6mv" path="res://source/gameplay/attributes/attribute_base.gd" id="6_0eujw"]
 [ext_resource type="Script" uid="uid://1tjkp68d02a4" path="res://source/gameplay/attributes/resources/melee_attack_damage.gd" id="7_i8e75"]
@@ -11,6 +15,11 @@
 [ext_resource type="PackedScene" uid="uid://u2d5ee88jvec" path="res://source/projectiles/melee/melee_projectile.tscn" id="8_2pinh"]
 [ext_resource type="Script" uid="uid://bw5biqgt6jaqk" path="res://source/gameplay/attributes/resources/melee_attack_range.gd" id="8_e6aee"]
 [ext_resource type="Script" uid="uid://b5rbiiq4lq88r" path="res://source/managers/StateMachine/HeroStateMachine.gd" id="9_3cjjk"]
+[ext_resource type="Script" uid="uid://bkvvudr42ia5i" path="res://source/managers/StateMachine/States/Idle.gd" id="hstate_idle"]
+[ext_resource type="Script" uid="uid://b414rsifp4ggh" path="res://source/managers/StateMachine/States/Moving.gd" id="hstate_walk"]
+[ext_resource type="Script" uid="uid://n436wfxwcyxw" path="res://source/managers/StateMachine/States/Attack.gd" id="hstate_attack"]
+[ext_resource type="Script" uid="uid://d07o38l0u1578" path="res://source/managers/StateMachine/States/Hurt.gd" id="hstate_hurt"]
+[ext_resource type="Script" uid="uid://d4adbepjsdnn2" path="res://source/managers/StateMachine/States/Death.gd" id="hstate_death"]
 [ext_resource type="Script" uid="uid://bctvnj0da6gsr" path="res://source/gameplay/abilities/active/melee_attack_ability.gd" id="9_i8e75"]
 [ext_resource type="Script" uid="uid://clrrmtpyxbjgv" path="res://source/gameplay/attributes/resources/melee_attack_speed.gd" id="9_jvlko"]
 [ext_resource type="Script" uid="uid://cu8i7xql5j2ev" path="res://source/components/behaviour/behaviour_component.gd" id="10_e6aee"]
@@ -90,12 +99,13 @@ script = ExtResource("7_j08x1")
 attributes = Array[ExtResource("6_0eujw")]([SubResource("Resource_2pinh")])
 metadata/_custom_type_script = "uid://dlony6exa8o5p"
 
-[node name="Hero" type="CharacterBody2D" unique_id=435185539 node_paths=PackedStringArray("modifiers", "health", "behaviour")]
+[node name="Hero" type="CharacterBody2D" unique_id=435185539 node_paths=PackedStringArray("modifiers", "health", "behaviour", "abilities")]
 motion_mode = 1
 script = ExtResource("1_ds5ku")
 modifiers = NodePath("ModifiersComponent")
 health = NodePath("HealthComponent")
 behaviour = NodePath("BehaviourComponent")
+abilities = NodePath("AbilityComponent")
 threat_rating = 1.0
 metadata/_custom_type_script = "uid://b4m52nppdykhp"
 
@@ -144,3 +154,23 @@ metadata/_custom_type_script = "uid://bnuirvjmb6dn6"
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=1079904847]
 script = ExtResource("9_3cjjk")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=801000001]
+script = ExtResource("hstate_idle")
+enter_texture = ExtResource("5_dh7n1")
+
+[node name="Walk" type="Node" parent="StateMachine" unique_id=801000002]
+script = ExtResource("hstate_walk")
+enter_texture = ExtResource("tex_hmove")
+
+[node name="Attack" type="Node" parent="StateMachine" unique_id=801000003]
+script = ExtResource("hstate_attack")
+enter_texture = ExtResource("tex_hattack")
+
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=801000004]
+script = ExtResource("hstate_hurt")
+enter_texture = ExtResource("tex_hhurt")
+
+[node name="Death" type="Node" parent="StateMachine" unique_id=801000005]
+script = ExtResource("hstate_death")
+enter_texture = ExtResource("tex_hdead")

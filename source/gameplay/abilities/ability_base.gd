@@ -24,6 +24,7 @@ func tick(caller: EntityBase, _delta_time: float) -> void:
 	
 func _on_activated(_caller: EntityBase) -> void:
 	_is_active = true
+	on_activate_ability.emit(self)
 
 func _on_deactivated(_caller: EntityBase) -> void:
 	_is_active = false

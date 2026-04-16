@@ -31,9 +31,9 @@ func get_effective_point_value() -> int:
 
 
 func configure_entity(entity: EntityBase) -> void:
-	if entity.abilities:
+	if entity.abilities and not abilities.is_empty():
 		entity.abilities.abilities = abilities.duplicate()
-	if entity.behaviour:
+	if entity.behaviour and not behaviours.is_empty():
 		entity.behaviour.behaviours = behaviours.duplicate()
 	if entity.health and health_attribute:
 		entity.health.health_attribute = health_attribute.duplicate()

@@ -65,15 +65,20 @@ func _think() -> void:
 	_build_navigation_path()
 
 func _on_perceive(perceived: Node2D) -> void:
-	if perceived is EntityBase:
+	if perceived is EntityBase and perceived not in _targets:
 		on_target_acquired.emit(perceived)
 		_targets.append(perceived)
-		perceived.tree_exiting.connect(_on_target_freed.bind(perceived))
-	
+		var cb := _on_target_freed.bind(perceived)
+		if not perceived.tree_exiting.is_connected(cb):
+			perceived.tree_exiting.connect(cb)
+
 func _on_unperceive(unperceived: Node2D) -> void:
 	if unperceived is EntityBase:
 		on_target_lost.emit(unperceived)
 		_targets.erase(unperceived)
+		var cb := _on_target_freed.bind(unperceived)
+		if unperceived.tree_exiting.is_connected(cb):
+			unperceived.tree_exiting.disconnect(cb)
 		
 func _on_target_freed(target: EntityBase) -> void:
 	_targets.erase(target)

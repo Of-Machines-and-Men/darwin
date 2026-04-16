@@ -2,13 +2,10 @@ class_name DeathState
 extends State
 
 func enter() -> void:
-	# start death animation
-	pass
+	state_machine.play(enter_texture)
 
 func exit() -> void:
-	# clean up
 	pass
 
-func update(delta: float) -> void:
-	# death logic
+func update(_delta: float) -> void:
 	pass
