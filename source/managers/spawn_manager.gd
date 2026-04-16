@@ -4,10 +4,12 @@ extends Node
 const CLUSTER_MIN: int = 4
 const CLUSTER_MAX: int = 5
 const CLUSTER_SPREAD: float = 50.0
-const BASE_SPAWN_USES: int = 5
+
+signal var BASE_SPAWN_USES: int = 5
 
 signal spawns_depleted
 signal entity_spawned(entity: EntityBase)
+signal remaining_spawns_changed(count: int)
 
 var remaining_spawns: int = BASE_SPAWN_USES
 
@@ -20,6 +22,7 @@ func setup(toolbar: SpawnToolbar, gameplay_layer: Node) -> void:
 
 func reset() -> void:
 	remaining_spawns = BASE_SPAWN_USES
+	remaining_spawns_changed.emit(remaining_spawns)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not event is InputEventMouseButton:
@@ -43,5 +46,6 @@ func _spawn_cluster(definition: GoonDefinition, center: Vector2) -> void:
 		definition.configure_entity(goon)
 		entity_spawned.emit(goon)
 	remaining_spawns -= 1
+	remaining_spawns_changed.emit(remaining_spawns)
 	if remaining_spawns <= 0:
 		spawns_depleted.emit()

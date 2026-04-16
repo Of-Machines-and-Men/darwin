@@ -23,6 +23,10 @@ func populate_slots() -> void:
 	if not definitions.is_empty() and selected_definition == null:
 		selected_definition = definitions[0]
 
+func update_remaining_spawns(count: int) -> void:
+	for slot in hotbar_slots:
+		slot.set_remaining_spawns(count)
+
 func _on_slot_pressed(definition: GoonDefinition) -> void:
 	selected_definition = definition
 	on_definition_selected.emit(definition)

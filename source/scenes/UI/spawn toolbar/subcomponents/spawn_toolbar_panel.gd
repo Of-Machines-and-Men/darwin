@@ -13,8 +13,10 @@ func set_value(new_value: GoonDefinition) -> void:
 	value = new_value
 	disabled = false
 	icon_container.texture = new_value.icon
-	cost_label.text = str(new_value.get_effective_spawn_cost())
 	name_label.text = new_value.display_name
+
+func set_remaining_spawns(count: int) -> void:
+	cost_label.text = str(count)
 
 func _handle_pressed() -> void:
 	if value:

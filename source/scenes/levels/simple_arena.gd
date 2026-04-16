@@ -28,6 +28,7 @@ func _ready() -> void:
 	spawn_manager.setup(spawn_toolbar, gameplay_layer)
 	spawn_manager.spawns_depleted.connect(_on_spawns_depleted)
 	spawn_manager.entity_spawned.connect(_on_entity_spawned)
+	spawn_manager.remaining_spawns_changed.connect(spawn_toolbar.update_remaining_spawns)
 	health_bar.setup(hero.health)
 	_start_round()
 
