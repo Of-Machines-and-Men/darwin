@@ -5,7 +5,7 @@ const CLUSTER_MIN: int = 4
 const CLUSTER_MAX: int = 5
 const CLUSTER_SPREAD: float = 50.0
 
-signal var BASE_SPAWN_USES: int = 5
+const BASE_SPAWN_USES: int = 5
 
 signal spawns_depleted
 signal entity_spawned(entity: EntityBase)
