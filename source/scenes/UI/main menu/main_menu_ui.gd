@@ -33,4 +33,4 @@ func _on_credits() -> void:
 	pass
 
 func _on_exit_game() -> void:
-	pass
+	get_tree().quit()

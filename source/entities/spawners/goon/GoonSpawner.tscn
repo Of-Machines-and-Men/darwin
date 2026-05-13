@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cs61of8v8065h"]
+
+[ext_resource type="Script" uid="uid://ccp3070y66b85" path="res://source/entities/spawners/goon/goon_spawner.gd" id="1_jl4kh"]
+
+[node name="GoonSpawner" type="Node2D" unique_id=2090741552]
+script = ExtResource("1_jl4kh")
