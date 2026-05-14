@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dmn4axtt8tfnu"]
 
 [ext_resource type="PackedScene" uid="uid://cs61of8v8065h" path="res://source/entities/spawners/goon/GoonSpawner.tscn" id="3_sp4kl"]
-[ext_resource type="Script" uid="uid://bteo2r6lsx32d" path="res://source/scenes/levels/simple_arena.gd" id="4_arena"]
+[ext_resource type="Script" uid="uid://bteo2r6lsx32d" path="res://source/scenes/levels/arenas/simple_arena.gd" id="4_arena"]
 [ext_resource type="PackedScene" uid="uid://bmr1f87biy5hx" path="res://source/entities/spawners/hero/HeroSpawner.tscn" id="4_yvnh4"]
 [ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="5_bg"]
 [ext_resource type="PackedScene" uid="uid://c7vikv4wru3p1" path="res://source/scenes/UI/gameplay/gameplay_ui.tscn" id="5_iratn"]
