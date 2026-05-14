@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cl22eg4jjhsqu"]
 
 [ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_qrejg"]
-[ext_resource type="Script" uid="uid://hk3xpjm0vkmm" path="res://source/scenes/UI/spawn toolbar/subcomponents/spawn_toolbar_panel.gd" id="2_hoq7x"]
+[ext_resource type="Script" uid="uid://hk3xpjm0vkmm" path="res://source/scenes/UI/gameplay/spawn toolbar/subcomponents/spawn_toolbar_panel.gd" id="2_hoq7x"]
 
 [node name="SpawnToolbarPanel" type="Button" unique_id=1554218292]
 custom_minimum_size = Vector2(68, 68)

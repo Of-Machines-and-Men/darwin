@@ -1,14 +1,14 @@
 class_name MainMenuUI
-extends CenterContainer
+extends VBoxContainer
 
 @export var game_config: GameConfig
 @export var show_resume_button: bool = false
 
-@onready var resume_button: Button = $VBoxContainer/ResumeButton
-@onready var new_game_button: Button = $VBoxContainer/NewGameButton
-@onready var settings_button: Button = $"VBoxContainer/Settings Button"
-@onready var exit_button: Button = $VBoxContainer/ExitButton
-@onready var credits_button: Button = $VBoxContainer/CreditsButton
+@onready var resume_button: Button = $ResumeButton
+@onready var new_game_button: Button = $NewGameButton
+@onready var settings_button: Button = $"Settings Button"
+@onready var exit_button: Button = $ExitButton
+@onready var credits_button: Button = $CreditsButton
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

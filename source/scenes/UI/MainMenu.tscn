@@ -4,22 +4,7 @@
 [ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_lrbq2"]
 [ext_resource type="Texture2D" uid="uid://c48crvt4qgnok" path="res://assets/art/placeholder/background.jpg" id="3_4qiku"]
 [ext_resource type="PackedScene" uid="uid://cn24rgpp4kgmk" path="res://source/scenes/UI/main menu/main_menu_ui.tscn" id="4_bcvk5"]
-[ext_resource type="Resource" uid="uid://78gso1v0nv7e" path="res://source/gameplay/data/goons/resources/default_hero.tres" id="5_bggur"]
-[ext_resource type="Script" uid="uid://bndfm5435xqs7" path="res://source/gameplay/data/game/game_config.gd" id="6_uodn4"]
-[ext_resource type="Script" uid="uid://wf7k7g402fd1" path="res://source/gameplay/data/goons/goon_definition.gd" id="7_4a21e"]
-[ext_resource type="Script" uid="uid://jklldj7fw5eq" path="res://source/gameplay/abilities/ability_base.gd" id="8_v4kf2"]
-[ext_resource type="Script" uid="uid://cr1pkboxsxpgg" path="res://source/gameplay/behaviours/behaviour_base.gd" id="9_vlh3e"]
-[ext_resource type="Script" uid="uid://c7sgbowaplewh" path="res://source/gameplay/attributes/modifiers/attribute_modifier_base.gd" id="10_v2i1w"]
-[ext_resource type="Script" path="res://source/gameplay/data/goons/default_goon_definition.gd" id="11_evtdj"]
-
-[sub_resource type="Resource" id="Resource_lehds"]
-script = ExtResource("11_evtdj")
-
-[sub_resource type="Resource" id="Resource_n004b"]
-script = ExtResource("6_uodn4")
-starting_goons = Array[ExtResource("7_4a21e")]([SubResource("Resource_lehds")])
-base_hero = ExtResource("5_bggur")
-metadata/_custom_type_script = "uid://bndfm5435xqs7"
+[ext_resource type="Resource" uid="uid://cl8w1b4pjr85" path="res://source/gameplay/data/game/resources/default_game_config.tres" id="5_u0oya"]
 
 [node name="MainMenu" type="Control" unique_id=1977385071]
 layout_mode = 3
@@ -187,7 +172,7 @@ offset_right = 1171.0
 offset_bottom = 725.0
 grow_horizontal = 1
 grow_vertical = 1
-game_config = SubResource("Resource_n004b")
+game_config = ExtResource("5_u0oya")
 
 [connection signal="value_changed" from="SettingsPanel/SettingsContent/MasterVolumeRow/MasterSlider" to="." method="_on_master_volume_changed"]
 [connection signal="toggled" from="SettingsPanel/SettingsContent/FullscreenRow/FullscreenCheck" to="." method="_on_fullscreen_toggled"]

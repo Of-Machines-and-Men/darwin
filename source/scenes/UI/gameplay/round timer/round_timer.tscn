@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://bdgby24xg5utk"]
+
+[ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_8kiob"]
+[ext_resource type="Script" uid="uid://vium48ah352u" path="res://source/scenes/UI/gameplay/round timer/round_timer.gd" id="1_76gtx"]
+
+[node name="RoundTimer" type="Control" unique_id=911428098]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_76gtx")
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1989605238]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 60.0
+grow_horizontal = 2
+theme = ExtResource("1_8kiob")
+theme_override_font_sizes/font_size = 48
+text = "00:00"

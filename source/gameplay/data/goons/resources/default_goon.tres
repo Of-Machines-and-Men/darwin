@@ -15,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cd6ofylu334t" path="res://source/entities/goon/goon.tscn" id="10_ay1jg"]
 [ext_resource type="Script" uid="uid://b2qsxil46mdam" path="res://source/gameplay/behaviours/resources/approach_target.gd" id="12_h7key"]
 [ext_resource type="Script" uid="uid://b8aniekowynst" path="res://source/gameplay/attributes/resources/health.gd" id="13_pxk16"]
-[ext_resource type="Texture2D" uid="uid://b36txqqwfxb27" path="res://assets/art/placeholder/goon.png" id="14_vtm3r"]
+[ext_resource type="Texture2D" uid="uid://bemkdusk4iw6m" path="res://assets/art/goon/idle.png" id="14_gnw0v"]
+[ext_resource type="Script" path="res://source/gameplay/attributes/resources/point_value.gd" id="16_0ah3a"]
+[ext_resource type="Script" path="res://source/gameplay/attributes/resources/spawn_cost.gd" id="18_rmios"]
 
 [sub_resource type="Resource" id="Resource_msdqd"]
 resource_local_to_scene = true
@@ -65,10 +67,19 @@ starting_value = 10.0
 base_value = 10.0
 metadata/_custom_type_script = "uid://b8aniekowynst"
 
+[sub_resource type="Resource" id="Resource_y6qca"]
+script = ExtResource("16_0ah3a")
+
+[sub_resource type="Resource" id="Resource_1wdoq"]
+script = ExtResource("18_rmios")
+base_value = 2.0
+
 [resource]
 script = ExtResource("4_86una")
-icon = ExtResource("14_vtm3r")
+icon = ExtResource("14_gnw0v")
 description = "Default goon"
+spawn_cost_attribute = SubResource("Resource_1wdoq")
+point_value_attribute = SubResource("Resource_y6qca")
 base_entity = ExtResource("10_ay1jg")
 abilities = Array[ExtResource("1_cq5fv")]([SubResource("Resource_jjmdn")])
 behaviours = Array[ExtResource("2_5f3ob")]([SubResource("Resource_kdhiy")])

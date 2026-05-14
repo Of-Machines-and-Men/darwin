@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c7vikv4wru3p1"]
+
+[ext_resource type="PackedScene" uid="uid://dmvf78pvqljgw" path="res://source/scenes/UI/gameplay/health bar/HealthBar.tscn" id="1_n7exh"]
+[ext_resource type="PackedScene" uid="uid://dat72sh28svv4" path="res://source/scenes/UI/gameplay/spawn toolbar/spawn_toolbar.tscn" id="2_1h606"]
+[ext_resource type="PackedScene" uid="uid://c3q3ybuac245r" path="res://source/scenes/UI/gameplay/points display/points_display.tscn" id="2_6614a"]
+[ext_resource type="PackedScene" uid="uid://bdgby24xg5utk" path="res://source/scenes/UI/gameplay/round timer/round_timer.tscn" id="3_2yuy3"]
+
+[node name="GameplayUi" type="Control" unique_id=1672130596]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopSection" type="MarginContainer" parent="." unique_id=1643550907]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TopSection" unique_id=476242244]
+layout_mode = 2
+
+[node name="HealthBar" parent="TopSection/VBoxContainer" unique_id=671312230 instance=ExtResource("1_n7exh")]
+custom_minimum_size = Vector2(1152, 120)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="InfoRow" type="HBoxContainer" parent="TopSection/VBoxContainer" unique_id=1492996587]
+layout_mode = 2
+
+[node name="PointsDisplay" parent="TopSection/VBoxContainer/InfoRow" unique_id=2012127347 instance=ExtResource("2_6614a")]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RoundTimer" parent="TopSection/VBoxContainer/InfoRow" unique_id=911428098 instance=ExtResource("3_2yuy3")]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="RightSpacer" type="Control" parent="TopSection/VBoxContainer/InfoRow" unique_id=2080979769]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ToolbarAnchor" type="Control" parent="." unique_id=1693436691]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SpawnToolbar" parent="ToolbarAnchor" unique_id=105463980 instance=ExtResource("2_1h606")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 650.0
+offset_right = 1152.0
+offset_bottom = 650.0
+grow_horizontal = 1
+grow_vertical = 1

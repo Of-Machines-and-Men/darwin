@@ -11,6 +11,8 @@ signal on_definition_selected(definition: GoonDefinition)
 
 func _ready() -> void:
 	hotbar_slots = []
+	definitions = PlayerManager.goon_definitions
+	
 	for child in hotbar_slots_container.get_children():
 		if child is SpawnToolbarPanel:
 			hotbar_slots.append(child)
