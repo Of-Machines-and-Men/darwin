@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cn24rgpp4kgmk"]
+
+[ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_fmlqk"]
+[ext_resource type="Script" uid="uid://bgl3f62mkbh6h" path="res://source/scenes/UI/main menu/main_menu_ui.gd" id="2_8b0em"]
+
+[node name="MainMenuUi" type="VBoxContainer" unique_id=1694867367]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -948.0
+offset_bottom = -472.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_fmlqk")
+script = ExtResource("2_8b0em")
+
+[node name="ResumeButton" type="Button" parent="." unique_id=158683533]
+layout_mode = 2
+text = "Resume"
+
+[node name="NewGameButton" type="Button" parent="." unique_id=1535968895]
+layout_mode = 2
+text = "New Game"
+
+[node name="Settings Button" type="Button" parent="." unique_id=1625650546]
+layout_mode = 2
+text = "Settings"
+
+[node name="CreditsButton" type="Button" parent="." unique_id=1768721876]
+layout_mode = 2
+text = "Credits"
+
+[node name="ExitButton" type="Button" parent="." unique_id=1486289177]
+layout_mode = 2
+text = "Exit Game"

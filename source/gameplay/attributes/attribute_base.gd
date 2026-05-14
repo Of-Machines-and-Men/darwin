@@ -23,7 +23,7 @@ func _apply_modifiers_to_value(value: float, applicable_modifiers: Array[Attribu
 	var additive_flat_sum = 0.0
 	var additive_percent_sum = 0.0
 	var multiplicative_flat_product = 1.0
-	var multiplicative_percent_sum = 0.0
+	var multiplicative_percent_product = 0.0
 	
 	for modifier in applicable_modifiers:
 		match modifier.modifier_type:
@@ -36,11 +36,11 @@ func _apply_modifiers_to_value(value: float, applicable_modifiers: Array[Attribu
 			AttributeModifierBase.ModifierType.MULTIPLICATIVE_FLAT:
 				multiplicative_flat_product *= modifier.magnitude
 			AttributeModifierBase.ModifierType.MULTIPLICATIVE_PERCENT:
-				multiplicative_percent_sum += modifier.magnitude
+				multiplicative_percent_product *= modifier.magnitude
 	
 	accumulated_value += additive_flat_sum
-	accumulated_value += (1.0 + additive_percent_sum) * accumulated_value
-	accumulated_value *= (1.0 + multiplicative_percent_sum)
+	accumulated_value *= (1.0 + additive_percent_sum)
+	accumulated_value *= (1.0 + multiplicative_percent_product)
 	accumulated_value *= multiplicative_flat_product
 	
 	return accumulated_value

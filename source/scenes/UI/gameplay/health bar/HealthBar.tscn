@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dmvf78pvqljgw"]
+
+[ext_resource type="Script" uid="uid://tssdy2pp3o7b" path="res://source/scenes/UI/gameplay/health bar/HealthBar.gd" id="0_hbscr"]
+[ext_resource type="Texture2D" uid="uid://bsc2bqfxuqw2i" path="res://assets/art/placeholder/ui/topbar.png" id="1_xfxxq"]
+[ext_resource type="Texture2D" uid="uid://dns61ium3tmo8" path="res://assets/art/placeholder/ui/HealthBarInner.png" id="3_s0xsl"]
+
+[node name="HealthBar" type="Control" unique_id=703506991]
+custom_minimum_size = Vector2(115, 20)
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 120.0
+grow_horizontal = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("0_hbscr")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=569534180]
+custom_minimum_size = Vector2(1152, 120)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 120.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("1_xfxxq")
+texture_progress = ExtResource("3_s0xsl")

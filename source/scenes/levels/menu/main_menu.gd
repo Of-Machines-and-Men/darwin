@@ -5,6 +5,7 @@ extends Control
 @onready var master_slider: HSlider = $SettingsPanel/SettingsContent/MasterVolumeRow/MasterSlider
 @onready var fullscreen_check: CheckButton = $SettingsPanel/SettingsContent/FullscreenRow/FullscreenCheck
 
+
 func _ready() -> void:
 	settings_panel.hide()
 	credits_panel.hide()

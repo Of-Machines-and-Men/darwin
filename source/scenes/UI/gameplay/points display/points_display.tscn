@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://c3q3ybuac245r"]
+
+[ext_resource type="Script" uid="uid://b2x6c6d5r63e7" path="res://source/scenes/UI/gameplay/points display/points_display.gd" id="1_h3ddh"]
+[ext_resource type="Theme" uid="uid://dgq2a34r85f6c" path="res://assets/theme.tres" id="1_mbfi8"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h3ddh"]
+
+[node name="PointsDisplay" type="Control" unique_id=2012127347]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_h3ddh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=109492188]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer" unique_id=593705396]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = SubResource("NoiseTexture2D_h3ddh")
+expand_mode = 2
+
+[node name="Spacer" type="Control" parent="HBoxContainer" unique_id=105251622]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
+
+[node name="PointsCount" type="Label" parent="HBoxContainer" unique_id=471877643]
+layout_mode = 2
+theme = ExtResource("1_mbfi8")
+theme_override_font_sizes/font_size = 32
+text = "0000"
