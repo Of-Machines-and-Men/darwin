@@ -21,7 +21,7 @@ func start_game(game_config: GameConfig) -> void:
 	initialise(game_config.get_round_times())
 	PlayerManager.initialise(game_config.starting_goons, game_config.starting_points)
 	HeroManager.initialise(game_config.base_hero)
-	get_tree().change_scene_to_file("res://source/scenes/levels/simple_arena.tscn")
+	get_tree().change_scene_to_file("res://source/scenes/levels/arenas/simple_arena.tscn")
 	on_start_game.emit()
 	set_phase(GamePhase.COMBAT)
 
