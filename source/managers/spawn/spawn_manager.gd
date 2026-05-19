@@ -7,9 +7,24 @@ var _last_goon_spawner_index: int = -1
 var _last_hero_spawner_index: int = -1
 
 func spawn_hero(hero_definition: GoonDefinition) -> void:
+	if hero_spawners.is_empty() or hero_definition == null:
+		push_error("No hero spawners registered in SpawnManager or hero definition is null.")
+		return
+
+	if not hero_definition.base_entity:
+		push_error("HeroDefinition %s does not have a valid base_entity." % hero_definition.display_name)
+		return
+
 	_last_hero_spawner_index = _get_next_hero_spawner_index()
 	var spawner = hero_spawners[_last_hero_spawner_index]
-	pass
+	var hero = hero_definition.base_entity.instantiate() as EntityBase
+	if not hero:
+		push_error("Failed to instantiate hero from definition %s." % hero_definition.display_name)
+		return
+
+	hero_definition.configure_entity(hero)
+	spawner.get_parent().add_child(hero)
+	hero.global_position = spawner.global_position
 
 func spawn_goon(goon_definition: GoonDefinition) -> void:
 	if goon_spawners.is_empty() or goon_definition == null:

@@ -8,6 +8,9 @@ func _ready() -> void:
 	if spawn_toolbar:
 		spawn_toolbar.on_definition_selected.connect(self._on_spawn_definition_selected)
 
+	if HeroManager.hero_definition:
+		SpawnManager.spawn_hero(HeroManager.hero_definition)
+
 func _on_spawn_definition_selected(definition: GoonDefinition) -> void:
 	SpawnManager.spawn_goon(definition)
 	print("Selected definition: %s" % definition.display_name)
