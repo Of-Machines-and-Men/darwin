@@ -10,10 +10,6 @@ func _ready() -> void:
 
 	if HeroManager.hero_definition:
 		SpawnManager.spawn_hero(HeroManager.hero_definition)
-
-func _on_spawn_definition_selected(definition: GoonDefinition) -> void:
-	SpawnManager.spawn_goon(definition)
-	print("Selected definition: %s" % definition.display_name)
-
+		
 func _process(delta: float) -> void:
 	pass
