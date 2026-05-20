@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _on_play_button_pressed() -> void:
 	await get_tree().create_timer(0.2).timeout
-	get_tree().change_scene_to_file("res://source/scenes/levels/SimpleArena.tscn")
+	get_tree().change_scene_to_file("res://source/scenes/levels/arenas/simple_arena.tscn")
 
 func _on_settings_button_pressed() -> void:
 	credits_panel.hide()
